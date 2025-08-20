@@ -1,15 +1,15 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1755706425
+::res://::1755710890
 base car.tscn::PackedScene/PackedScene::6006632351280429546::1755697817::0::1::::<><><>0<>0<><>::uid://df2i30irlljkl::::res://MAIN/wheel.tscn<>uid://c1qved5286i2u::::res://MAIN/car.gd<>uid://c7m04qiimdydw::::res://MAIN/misc/engine sound/engine.tscn<>uid://del2h14nydk3g::::res://MAIN/misc/textures/rim.jpg<>uid://d1vmrvs3aj84o::::res://MAIN/misc/tyre sounds/tyres.tscn<>uid://c43p6bbeeuq4f::::res://MAIN/misc/mechanical sounds/other_sounds.tscn<>uid://kb7hq7qvuul3::::res://MAIN/misc/backfire_particles/fire.tscn<>uid://1a0k3s3amej8::::res://MAIN/misc/backfire_particles/backfire.png
 default_bus_layout.tres::AudioBusLayout/AudioBusLayout::843813187252370841::1755699643::0::1::::<><><>0<>0<><>::
-default_env.tres::Environment::3574772965805249146::1755705966::0::1::::<><><>0<>0<><>::
+default_env.tres::Environment::3574772965805249146::1755707269::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile/TextFile::-1::1681208134::0::1::::<><><>0<>0<><>::
 Grid.png::CompressedTexture2D/CompressedTexture2D::787967628881786892::1681208134::1755697806::1::::<><><>0<>0<>c4bf73ddb267012690cff5ce461ea90b<>res://.godot/imported/Grid.png-2111b632e1715715316a25911ba3fa72.s3tc.ctex::
 icon.png::CompressedTexture2D/CompressedTexture2D::5086476943662964858::1681208134::1755697806::1::::<><><>0<>0<>06e7e09a4550584f7b045c2f837ff894<>res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex::
 logo.png::CompressedTexture2D/CompressedTexture2D::4407219616870203296::1681208134::1755697806::1::::<><><>0<>0<>092f140987a97bae9b57b71f19a7c446<>res://.godot/imported/logo.png-cca8726399059c8d4f806e28e356b14d.ctex::
 morning_env.scn::PackedScene/PackedScene::3285800326529799812::1755697817::0::1::::<><><>0<>0<><>::
 TEMPLATE.tscn::PackedScene/PackedScene::7693953741836897403::1755697817::0::1::::<><><>0<>0<><>::uid://crtwme8ggggra::::res://base car.tscn<>uid://c6wt0orv73xy1::::res://MAIN/misc/camera.gd<>uid://ddlr528rnt21u::::res://MAIN/ground_surface_variables.gd<>uid://cv0iolhv1qxsn::::res://MISC/scene swapper/scenes/Test Scene/assets/Grid.png
-world.tscn::PackedScene::5607897601783510848::1755705966::0::1::::<><><>0<>0<><>::uid://crtwme8ggggra::::res://base car.tscn<>uid://c6wt0orv73xy1::::res://MAIN/misc/camera.gd<>uid://b77dj0608nvq0::::res://MISC/debugger.tscn<>uid://diafjore21wn::::res://MISC/scene swapper/scenes/Test Scene/scene.tscn<>uid://bm2wwe6lx2b53::::res://morning_env.scn<>uid://l32g0g53ug0g::::res://MISC/mobile controls/mobile.tscn<>uid://b315i7ikjj32c::::res://logo.png
+world.tscn::PackedScene::5607897601783510848::1755707269::0::1::::<><><>0<>0<><>::uid://crtwme8ggggra::::res://base car.tscn<>uid://c6wt0orv73xy1::::res://MAIN/misc/camera.gd<>uid://b77dj0608nvq0::::res://MISC/debugger.tscn<>uid://diafjore21wn::::res://MISC/scene swapper/scenes/Test Scene/scene.tscn<>uid://bm2wwe6lx2b53::::res://morning_env.scn<>uid://l32g0g53ug0g::::res://MISC/mobile controls/mobile.tscn<>uid://b315i7ikjj32c::::res://logo.png
 ::res://addons/::1681828772
 ::res://addons/vitavehicle_ui/::1755697815
 api_references.gd::GDScript/GDScript::1459898484204601217::1681208134::0::1::::<>VBoxContainer<><>0<>1<><>::
@@ -20,14 +20,15 @@ interface.tscn::PackedScene/PackedScene::4442507923572005845::1755697815::0::1::
 plugin.cfg::TextFile/TextFile::-1::1681826638::0::1::::<><><>0<>0<><>::
 script.gd::GDScript/GDScript::3655789646330053708::1681826724::0::1::::<>EditorPlugin<><>0<>1<><>::
 tune_vars.gd::GDScript/GDScript::3252286344116526319::1681208134::0::1::::<>Node<><>0<>0<><>::
-::res://FONT/::1755697805
+::res://FONT/::1755708582
 Apache License.txt::TextFile/TextFile::-1::1681208134::0::1::::<><><>0<>0<><>::
 DroidSans-Bold.ttf::FontFile/FontFile::814875492688835281::1681208134::1755697805::1::::<><><>0<>0<>143303c509ac65dfcd868178d6b07084<>res://.godot/imported/DroidSans-Bold.ttf-8053c0f387f0ef983487a40702c1e286.fontdata::
 DroidSans.ttf::FontFile/FontFile::3770854306919019749::1681208134::1755697805::1::::<><><>0<>0<>32ea740e894e28cb1df2ad2b714cf394<>res://.godot/imported/DroidSans.ttf-e94259dbfadbf59663aabf21f05d923d.fontdata::
-::res://MAIN/::1755705589
+README.md::TextFile::-1::1755708582::0::1::::<><><>0<>0<><>::
+::res://MAIN/::1755706835
 car.gd::GDScript/GDScript::6632063751249982898::1755704329::0::1::::<>RigidBody3D<><>0<>0<><>::
 ground_surface_variables.gd::GDScript/GDScript::7393623969881787708::1681208134::0::1::::<>StaticBody3D<><>0<>0<><>::
-vitavehicle.gd::GDScript/GDScript::4618283731088444889::1755705589::0::1::::<>Node<><>0<>1<><>::
+vitavehicle.gd::GDScript::4618283731088444889::1755706835::0::1::::<>Node<><>0<>1<><>::
 wheel.gd::GDScript/GDScript::1213464240208131307::1681826052::0::1::::<>RayCast3D<><>0<>0<><>::
 wheel.tscn::PackedScene/PackedScene::7566481533030281771::1755697815::0::1::::<><><>0<>0<><>::uid://rj2txbckbu08::::res://MAIN/wheel.gd<>uid://q8oxthp1fyj5::::res://MAIN/misc/tyre smoke/smoke.tscn<>uid://3vxrexntr43u::::res://MAIN/misc/forces debug/forces.gd<>uid://bg3o1u5r81wfs::::res://MAIN/misc/tyre marks/tyremark.tscn
 ::res://MAIN/misc/::1755697805

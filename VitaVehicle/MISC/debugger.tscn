@@ -863,13 +863,13 @@ Q/L = Shift Down
 Space/Ctrl = Handbrake
 
 Mouse Steering:
-LMB = Accelerator
-RMB = Brake
-Cursor (Horizontal Axis Only) = Steer
-W = Clutch
+Cursor (Horizontal Axis) = Steer
+W/LMB = Accelerator
+S/RMB = Brake
+Shift = Clutch
 E = Shift Up
 Q = Shift Down
-Shift = Handbrake
+Space = Handbrake
 
 Gamepad:
 NOT CONFIGURED
