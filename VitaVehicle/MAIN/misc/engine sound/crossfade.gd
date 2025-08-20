@@ -46,7 +46,7 @@ func _physics_process(_delta):
 	
 	vacuum = (get_parent().gaspedal-get_parent().throttle)*4
 	
-	if vacuum<0:
+	if vacuum<0: # TODO: learn how these work and if it is what i think, just use clamping setters
 		vacuum = 0
 	elif vacuum>1:
 		vacuum = 1

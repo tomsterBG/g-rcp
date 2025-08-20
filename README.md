@@ -20,6 +20,7 @@ More help can be found in the VitaVehicle Interface once you've opened the proje
 ### Current Acknowledged Issues
 - Controls feel weird
 - Some code must be refactored because it's messy
+- There is a hacky piece of code that tries to press Esc for 0.1 seconds each time you open a menu to prevent menus from stacking. However it doesn't work.
 
 # Fork
 This is tomsterBG's copy of VitaVehicle. I am not the best when it comes to not abandoning projects, but i'll try :)

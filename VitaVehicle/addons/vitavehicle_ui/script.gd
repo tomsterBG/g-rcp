@@ -44,6 +44,5 @@ func _get_plugin_icon():
 	return get_editor_interface().get_base_control().get_theme_icon("Node", "EditorIcons")
 
 func _unhandled_input(event):
-#	if event is InputEventKey and event.pressed and event.scancode == KEY_BACKSLASH:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_BACKSLASH:
 		pass
