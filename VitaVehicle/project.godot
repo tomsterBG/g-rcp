@@ -14,6 +14,7 @@ config/name="VitaVehicle tomster"
 run/main_scene="res://world.tscn"
 config/features=PackedStringArray("4.4")
 config/icon="res://icon.png"
+config/tags=PackedStringArray("git_project")
 
 [autoload]
 
