@@ -28,6 +28,8 @@ I really love this game because it runs well on my laptop and feels good. Maybe 
 # Current TODO
 - [ ] Simple refactoring of code for readability, flexibility, simplicity and ease of use.
 - [ ] Simple QOL improvements to controls.
+	- [ ] R to toggle mouse steering.
+	- [ ] V to spin the starter. This would require checking if there's a starter, making one if there isn't, adding a sound for it.
 
 # Future TODO (please help me with these if you can, i probably won't be able to make a single one of these for a while)
 - [ ] Content. Cars, maps, sounds, trailers, trucks, hinges, horns, music, everything.

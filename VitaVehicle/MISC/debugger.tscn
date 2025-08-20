@@ -1115,7 +1115,7 @@ anchor_left = 0.852539
 anchor_top = 0.1
 anchor_right = 0.995117
 anchor_bottom = 0.19
-text = "fix engine"
+text = "start engine"
 
 [node name="open graphics" type="Button" parent="."]
 layout_mode = 0

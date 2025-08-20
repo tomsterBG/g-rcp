@@ -3,3 +3,4 @@ res://default_env.tres
 res://world.tscn
 res://MAIN/vitavehicle.gd
 res://MISC/debugger.tscn
+res://MISC/misc scripts/show_info.gd
