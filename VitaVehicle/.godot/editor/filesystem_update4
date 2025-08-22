@@ -1,9 +1,3 @@
-res://default_bus_layout.tres
 res://default_env.tres
 res://world.tscn
-res://MAIN/vitavehicle.gd
-res://MISC/debugger.tscn
-res://MISC/misc scripts/show_info.gd
-res://addons/vitavehicle_ui/folds.gd
-res://addons/vitavehicle_ui/script.gd
-res://MAIN/misc/engine sound/crossfade.gd
+res://default_bus_layout.tres
