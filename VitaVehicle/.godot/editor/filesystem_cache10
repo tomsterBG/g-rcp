@@ -1,19 +1,19 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1756367138
+::res://::1756369954
 base car.tscn::PackedScene/PackedScene::6006632351280429546::1755697817::0::1::::<><><>0<>0<><>::uid://df2i30irlljkl::::res://MAIN/wheel.tscn<>uid://c1qved5286i2u::::res://MAIN/car.gd<>uid://c7m04qiimdydw::::res://MAIN/misc/engine sound/engine.tscn<>uid://del2h14nydk3g::::res://MAIN/misc/textures/rim.jpg<>uid://d1vmrvs3aj84o::::res://MAIN/misc/tyre sounds/tyres.tscn<>uid://c43p6bbeeuq4f::::res://MAIN/misc/mechanical sounds/other_sounds.tscn<>uid://kb7hq7qvuul3::::res://MAIN/misc/backfire_particles/fire.tscn<>uid://1a0k3s3amej8::::res://MAIN/misc/backfire_particles/backfire.png
-default_bus_layout.tres::AudioBusLayout::843813187252370841::1756366905::0::1::::<><><>0<>0<><>::
-default_env.tres::Environment::3574772965805249146::1756367122::0::1::::<><><>0<>0<><>::
+default_bus_layout.tres::AudioBusLayout::843813187252370841::1756367139::0::1::::<><><>0<>0<><>::
+default_env.tres::Environment::3574772965805249146::1756367499::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile/TextFile::-1::1681208134::0::1::::<><><>0<>0<><>::
 Grid.png::CompressedTexture2D/CompressedTexture2D::787967628881786892::1681208134::1755697806::1::::<><><>0<>0<>c4bf73ddb267012690cff5ce461ea90b<>res://.godot/imported/Grid.png-2111b632e1715715316a25911ba3fa72.s3tc.ctex::
 icon.png::CompressedTexture2D/CompressedTexture2D::5086476943662964858::1681208134::1755697806::1::::<><><>0<>0<>06e7e09a4550584f7b045c2f837ff894<>res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex::
 logo.png::CompressedTexture2D/CompressedTexture2D::4407219616870203296::1681208134::1755697806::1::::<><><>0<>0<>092f140987a97bae9b57b71f19a7c446<>res://.godot/imported/logo.png-cca8726399059c8d4f806e28e356b14d.ctex::
 morning_env.scn::PackedScene/PackedScene::3285800326529799812::1755697817::0::1::::<><><>0<>0<><>::
 TEMPLATE.tscn::PackedScene/PackedScene::7693953741836897403::1755697817::0::1::::<><><>0<>0<><>::uid://crtwme8ggggra::::res://base car.tscn<>uid://c6wt0orv73xy1::::res://MAIN/misc/camera.gd<>uid://ddlr528rnt21u::::res://MAIN/ground_surface_variables.gd<>uid://cv0iolhv1qxsn::::res://MISC/scene swapper/scenes/Test Scene/assets/Grid.png
-world.tscn::PackedScene::5607897601783510848::1756367122::0::1::::<><><>0<>0<><>::uid://crtwme8ggggra::::res://base car.tscn<>uid://c6wt0orv73xy1::::res://MAIN/misc/camera.gd<>uid://b77dj0608nvq0::::res://MISC/debugger.tscn<>uid://diafjore21wn::::res://MISC/scene swapper/scenes/Test Scene/scene.tscn<>uid://bm2wwe6lx2b53::::res://morning_env.scn<>uid://l32g0g53ug0g::::res://MISC/mobile controls/mobile.tscn<>uid://b315i7ikjj32c::::res://logo.png
+world.tscn::PackedScene::5607897601783510848::1756367499::0::1::::<><><>0<>0<><>::uid://crtwme8ggggra::::res://base car.tscn<>uid://c6wt0orv73xy1::::res://MAIN/misc/camera.gd<>uid://b77dj0608nvq0::::res://MISC/debugger.tscn<>uid://diafjore21wn::::res://MISC/scene swapper/scenes/Test Scene/scene.tscn<>uid://bm2wwe6lx2b53::::res://morning_env.scn<>uid://l32g0g53ug0g::::res://MISC/mobile controls/mobile.tscn<>uid://b315i7ikjj32c::::res://logo.png
 ::res://addons/::1756366691
 ::res://addons/g_classes_unit_tested/::1756367062
 plugin.cfg::TextFile/TextFile::-1::1756366528::0::1::::<><><>0<>0<><>::
-script.gd::GDScript::7306229042248462323::1756367062::0::1::::<>EditorPlugin<><>0<>1<><>::
+script.gd::GDScript/GDScript::7306229042248462323::1756367062::0::1::::<>EditorPlugin<><>0<>1<><>::
 ::res://addons/g_classes_unit_tested/components/::1756366380
 health plus.gd::GDScript/GDScript::230846012043413312::1756326231::0::1::::HealthPlus<>Health<><>0<>1<><>::
 health.gd::GDScript/GDScript::667157092325065716::1756324769::0::1::::Health<>Node<>res://addons/g_classes_unit_tested/components/health.svg<>0<>1<><>::
@@ -100,8 +100,8 @@ graphics.gd::GDScript/GDScript::5725679670915341123::1694884444::0::1::::<>Node<
 ::res://MISC/car swapper/::1755697805
 car swapper.gd::GDScript/GDScript::4002184270799642879::1682150104::0::1::::<>Control<><>0<>0<><>::
 ::res://MISC/car swapper/cars/::1694976282
-::res://MISC/car swapper/cars/Eclipse SRC/::1756366784
-scene.tscn::PackedScene/PackedScene::6631471648446349857::1756366784::0::1::::<><><>0<>0<><>::uid://df2i30irlljkl::::res://MAIN/wheel.tscn<>uid://c1qved5286i2u::::res://MAIN/car.gd<>uid://c7m04qiimdydw::::res://MAIN/misc/engine sound/engine.tscn<>uid://ckt75vv2etwoa::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/1.ogg<>uid://d1vmrvs3aj84o::::res://MAIN/misc/tyre sounds/tyres.tscn<>uid://cqdajib2yo6rv::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/2.ogg<>uid://c43p6bbeeuq4f::::res://MAIN/misc/mechanical sounds/other_sounds.tscn<>uid://d6eb4cnoayb7::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/3.ogg<>uid://bgadta1w1wxsb::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/4.ogg<>uid://css4spfpu75vb::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/5.ogg<>uid://cxwcusr1xcuau::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/6.ogg<>uid://ckhm05fdvk5rf::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/7.ogg<>uid://bvu4bihqkrgdt::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/8.ogg
+::res://MISC/car swapper/cars/Eclipse SRC/::1756367499
+scene.tscn::PackedScene::6631471648446349857::1756367499::0::1::::<><><>0<>0<><>::uid://df2i30irlljkl::::res://MAIN/wheel.tscn<>uid://c1qved5286i2u::::res://MAIN/car.gd<>uid://c7m04qiimdydw::::res://MAIN/misc/engine sound/engine.tscn<>uid://ckt75vv2etwoa::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/1.ogg<>uid://d1vmrvs3aj84o::::res://MAIN/misc/tyre sounds/tyres.tscn<>uid://cqdajib2yo6rv::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/2.ogg<>uid://c43p6bbeeuq4f::::res://MAIN/misc/mechanical sounds/other_sounds.tscn<>uid://d6eb4cnoayb7::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/3.ogg<>uid://bgadta1w1wxsb::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/4.ogg<>uid://css4spfpu75vb::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/5.ogg<>uid://cxwcusr1xcuau::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/6.ogg<>uid://ckhm05fdvk5rf::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/7.ogg<>uid://bvu4bihqkrgdt::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/8.ogg
 thumbnail.png::CompressedTexture2D/CompressedTexture2D::5547623015528300654::1666053560::1755697806::1::::<><><>0<>0<>8452dcd702a3289b41a184c803c186fa<>res://.godot/imported/thumbnail.png-d72d41ae5f10c1c8969a3bf29e1cd789.ctex::
 ::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/::1755697805
 1.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::5515950635343455660::1684066066::1755697805::1::::<><><>0<>0<>b1ccdb4e3efa6a899936d0f355911abe<>res://.godot/imported/1.ogg-4f69365c613a273cc8d518ec75ef6af4.oggvorbisstr::
@@ -121,10 +121,10 @@ display.tscn::PackedScene/PackedScene::1924549386170310519::1755697815::0::1::::
 draw.gd::GDScript/GDScript::2731863451814953997::1681060470::0::1::::<>Control<><>0<>0<><>::
 ::res://MISC/graphics_config/::1755697805
 graphics config.gd::GDScript/GDScript::2237112572185526064::1682226046::0::1::::<>Control<><>0<>0<><>::
-::res://MISC/misc scripts/::1755715511
+::res://MISC/misc scripts/::1756367494
 debug.gd::GDScript/GDScript::9075359979557436644::1694885764::0::1::::<>Control<><>0<>0<><>::
 interior_feedback_camera.gd::GDScript/GDScript::8739455743386589616::1681060538::0::1::::<>Camera3D<><>0<>0<><>::
-show_info.gd::GDScript/GDScript::4068847061536787898::1755715511::0::1::::<>Control<><>0<>0<><>::
+show_info.gd::GDScript::4068847061536787898::1756367494::0::1::::<>Control<><>0<>0<><>::
 sky_setting.gd::GDScript/GDScript::239619538110701355::1682226294::0::1::::<>WorldEnvironment<><>0<>0<><>::
 ::res://MISC/mobile controls/::1755697815
 mobile.tscn::PackedScene/PackedScene::831531254454007952::1755697815::0::1::::<><><>0<>0<><>::uid://bag4brlbflvfn::::res://MISC/mobile controls/mobile_ctrls.gd<>uid://3waiahkign4m::::res://MISC/mobile controls/assets/gas.png<>uid://ij0lvx0g3fhg::::res://MISC/mobile controls/positioning.gd<>uid://dt2kethnrto6::::res://MISC/mobile controls/assets/brake.png<>uid://co10nnw28an0u::::res://MISC/mobile controls/assets/clutch.png<>uid://b0rcc2epapnjd::::res://MISC/mobile controls/assets/arrow.png<>uid://cnpqwugx4g1x4::::res://MISC/mobile controls/assets/su.png<>uid://cc3nebbysjb4x::::res://MISC/mobile controls/assets/sd.png<>uid://cv8rsjlkkth1a::::res://MISC/mobile controls/assets/hb.png
@@ -154,8 +154,8 @@ roadsurface.png::CompressedTexture2D/CompressedTexture2D::2972301020392803906::1
 roadsurfaceunmarked.jpg::CompressedTexture2D/CompressedTexture2D::4451291156680169434::1591727464::1755697806::1::::<><><>0<>0<>68fe4a220f1f1dc459a0f7081f1cd7e1<>res://.godot/imported/roadsurfaceunmarked.jpg-ef89cc0e49ca51b54a90a165e0ddde41.s3tc.ctex::
 rock2.jpg::CompressedTexture2D/CompressedTexture2D::6467811210832736051::1609876738::1755697806::1::::<><><>0<>0<>173bc2012218f2a41376b8ffc4f7e3a4<>res://.godot/imported/rock2.jpg-e14baebad496c61be50b2653c6df6712.ctex::
 rock2_hd.png::CompressedTexture2D/CompressedTexture2D::4640465855415568890::1630788098::1755697806::1::::<><><>0<>0<>475b79599cbbefbe8fbe9aee9a72c073<>res://.godot/imported/rock2_hd.png-a53bb7336974dfd5484edc246163f034.s3tc.ctex::
-::res://MISC/scene swapper/scenes/Test Scene/::1756366784
-scene.tscn::PackedScene/PackedScene::227090977032352537::1756366784::0::1::::<><><>0<>0<><>::uid://ddlr528rnt21u::::res://MAIN/ground_surface_variables.gd<>uid://cv0iolhv1qxsn::::res://MISC/scene swapper/scenes/Test Scene/assets/Grid.png
+::res://MISC/scene swapper/scenes/Test Scene/::1756367499
+scene.tscn::PackedScene::227090977032352537::1756367499::0::1::::<><><>0<>0<><>::uid://ddlr528rnt21u::::res://MAIN/ground_surface_variables.gd<>uid://cv0iolhv1qxsn::::res://MISC/scene swapper/scenes/Test Scene/assets/Grid.png
 thumbnail.png::CompressedTexture2D/CompressedTexture2D::2767916381323389249::1666215474::1755697806::1::::<><><>0<>0<>3b854ddafa34b75d1bb624d13e6c9966<>res://.godot/imported/thumbnail.png-99316fc53e79d42dd7e9059a08a89021.ctex::
 ::res://MISC/scene swapper/scenes/Test Scene/assets/::1755697806
 Grid.png::CompressedTexture2D/CompressedTexture2D::6298927854253204045::1662408600::1755697806::1::::<><><>0<>0<>62245da3cf8cb0d9286e977912ac4aee<>res://.godot/imported/Grid.png-6ce861df08f21bd59bbd057d594d770c.s3tc.ctex::
