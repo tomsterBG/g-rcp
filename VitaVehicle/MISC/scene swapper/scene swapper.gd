@@ -70,7 +70,7 @@ func _ready():
 		but.pressed.connect(swapmap.bind(i))
 	
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		visible = false
 
@@ -83,4 +83,3 @@ func _on_swap_map_pressed():
 		await get_tree().create_timer(0.1).timeout
 		Input.action_release("ui_cancel")
 		visible = true
-

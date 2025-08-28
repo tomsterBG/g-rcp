@@ -7,7 +7,7 @@ extends Node3D
 
 @export var dirt_type = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var velo1_v = get_parent().get_parent().get_parent().velocity
 	var velo2_v = get_parent().get_parent().get_parent().velocity2
 	

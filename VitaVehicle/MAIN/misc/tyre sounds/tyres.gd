@@ -35,7 +35,7 @@ func most_skidding(array):
 	
 	return obj
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	dirt = 0.0
 	for i in wheels:
 		dirt += float(i.ground_dirt)/len(wheels)

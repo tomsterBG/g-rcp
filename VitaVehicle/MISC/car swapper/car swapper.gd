@@ -108,7 +108,7 @@ func _ready():
 	$scroll/container/_DEFAULT.pressed.connect(swapcar.bind("_DEFAULT_CAR_"))
 	
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		visible = false
 
@@ -122,5 +122,3 @@ func _on_swap_car_pressed():
 		
 		Input.action_release("ui_cancel")
 		visible = true
-
-

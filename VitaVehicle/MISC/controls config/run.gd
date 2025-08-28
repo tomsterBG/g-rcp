@@ -19,7 +19,7 @@ func _ready():
 				i.button_pressed = car.get(i.var_name)
 				i.get_node("amount").text = str(i.button_pressed)
 
-func _process(delta):
+func _process(_delta):
 	if not str(get_parent().car) == "":
 		for i in $scroll/container.get_children():
 			if i.var_name == "GEAR_ASSIST":
@@ -33,7 +33,7 @@ func _process(delta):
 					car.set(i.var_name,i.button_pressed)
 					i.get_node("amount").text = str(i.button_pressed)
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		visible = false
 

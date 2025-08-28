@@ -38,7 +38,7 @@ func add_segment():
 	last_pos = ppos
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 #	get_parent().get_node("Camera").rotation_degrees.y += 20
 	
@@ -87,7 +87,7 @@ func _process(_delta):
 	
 	ran = true
 	if (global_transform.origin - g).length_squared()>0.01:
-		look_at(g,Vector3(0,1,0))
+		look_at(g,Vector3(0,1,0)) # WARNING BUG: Colinear vectors.
 	
 	g = global_transform.origin
 	var ppos = global_transform

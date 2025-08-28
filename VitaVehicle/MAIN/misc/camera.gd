@@ -21,7 +21,7 @@ func _ready():
 	default_cam_pos = $orbit/Camera.position
 	default_zoom = default_cam_pos.z
 
-func _process(delta):
+func _process(_delta):
 	if has_node(debugger):
 		car = get_node(debugger).car
 	if has_node(car):
@@ -37,7 +37,7 @@ func _process(delta):
 		$orbit.global_position = get_node(car).global_position
 		$orbit/Camera.position = default_cam_pos -$orbit.position
 		
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if Input.is_action_pressed("zoom_out"):
 		default_cam_pos.z += 0.05

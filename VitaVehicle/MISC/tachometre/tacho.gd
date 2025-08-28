@@ -69,7 +69,7 @@ func _ready():
 			if float(i+0.75)>red:
 				d.color = Color(1,0,0)
 
-func _process(delta):
+func _process(_delta):
 	$tacho/needle.rotation_degrees = -120.0 +240.0*(abs(currentrpm)/RPM_Range)
 	
 	$turbo/needle.rotation_degrees = -90.0 +180.0*(currentpsi/Max_PSI)

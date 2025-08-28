@@ -58,7 +58,7 @@ func stop():
 func _ready():
 	play()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	fueltrace += (get_parent().throttle)*backfire_FuelRichness
 	air = (get_parent().throttle*get_parent().rpm)*backfire_Air +get_parent().turbopsi
 

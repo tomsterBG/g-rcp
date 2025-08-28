@@ -36,7 +36,7 @@ func append_wheel(position,settings,node):
 	
 	appended.append(w)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	for i in appended:
 		i.position = size/2

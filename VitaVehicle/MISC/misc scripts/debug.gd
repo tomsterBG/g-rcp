@@ -88,7 +88,7 @@ func _process(delta):
 			else:
 				$tacho/gear.text = str(get_node(car).gear)
 			
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not str(car) == "":
 		$vgs.gforce -= ($vgs.gforce - Vector2(get_node(car).gforce.x,get_node(car).gforce.z))*0.5
 		

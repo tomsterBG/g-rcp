@@ -10,12 +10,12 @@ func _ready():
 		i.button_pressed = misc_graphics_settings.get(i.var_name)
 		i.get_node("amount").text = str(i.button_pressed)
 
-func _process(delta):
+func _process(_delta):
 	for i in $scroll/container.get_children():
 		misc_graphics_settings.set(i.var_name,i.button_pressed)
 		i.get_node("amount").text = str(i.button_pressed)
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		visible = false
 	elif Input.is_action_just_pressed("toggle_fs"):

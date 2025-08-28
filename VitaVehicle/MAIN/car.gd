@@ -876,7 +876,7 @@ func aero():
 		apply_central_impulse(forc)
 		
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if len(steering_angles)>0:
 		max_steering_angle = 0.0
 		for i in steering_angles:
@@ -1035,7 +1035,7 @@ var total = 0.0
 
 var weight_dist = [0.0,0.0]
 
-func _process(delta):
+func _process(_delta):
 	if Debug_Mode:
 		# BUG: Why do this each frame? Initialize with events no?
 		front_wheels = []

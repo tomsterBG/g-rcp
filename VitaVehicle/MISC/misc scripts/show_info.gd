@@ -1,6 +1,6 @@
 extends Control
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		visible = false
 
