@@ -84,12 +84,11 @@ func _process(_delta):
 			
 			add_child(current_trail_node)
 			drawers.append(current_trail_node)
-		
 	
 	ran = true
 	if (global_transform.origin - g).length_squared()>0.01:
 		look_at(g,Vector3(0,1,0))
-		
+	
 	g = global_transform.origin
 	var ppos = global_transform
 	
@@ -113,5 +112,5 @@ func _process(_delta):
 					
 					current_trail.surface_add_vertex(i[0] -global_transform.origin)
 					current_trail.surface_add_vertex(i[1] -global_transform.origin)
-				
+			
 			current_trail.surface_end()
