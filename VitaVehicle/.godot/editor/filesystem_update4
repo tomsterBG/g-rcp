@@ -1,3 +1,8 @@
 res://default_bus_layout.tres
 res://default_env.tres
 res://MISC/scene swapper/scenes/Test Scene/scene.tscn
+res://world.tscn
+res://MISC/car swapper/cars/Eclipse SRC/scene.tscn
+res://base car.tscn
+res://MAIN/car.gd
+res://MAIN/vitavehicle.gd

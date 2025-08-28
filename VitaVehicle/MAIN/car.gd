@@ -13,8 +13,8 @@ extends RigidBody3D
 @export var KeyboardCompensateSpeed = 0.1
 
 @export var SteerAmountDecay = 0.015 # understeer help
-@export var SteeringAssistance = 1.0
-@export var SteeringAssistanceAngular = 0.12
+@export var SteeringAssistance = 0.0
+@export var SteeringAssistanceAngular = 0.0
 
 @export var LooseSteering: bool = false #simulate rack and pinion steering physics (EXPERIMENTAL)
 
@@ -783,7 +783,7 @@ func transmission():
 		clutchpedal = 1.0
 
 func drivetrain():
-			
+		
 		rpmcsm -= (rpmcs - resistance)
 
 		rpmcs += rpmcsm*ClutchElasticity
@@ -801,7 +801,7 @@ func drivetrain():
 			rpm -= ((rpmcs*1.0)/clock_mult)*(RevSpeed/1.475)
 		else:
 			rpm += ((rpmcs*1.0)/clock_mult)*(RevSpeed/1.475)
-				
+			
 		if "":
 			rpm = 7000.0
 			Locking = 0.0
@@ -811,7 +811,7 @@ func drivetrain():
 			Preload = 1.0
 			Centre_Preload = 1.0
 			ClutchFloatReduction = 0.0
-				
+			
 		gearstress = (abs(resistance)*StressFactor)*clutchpedal
 		var stabled = ratio*0.9 +0.1
 		ds_weight = DSWeight/stabled
@@ -837,7 +837,7 @@ func drivetrain():
 			c_locked = 0.0
 		elif c_locked>1.0:
 			c_locked = 1.0
-			
+		
 		var maxd = VitaVehicleSimulation.fastest_wheel(c_pws)
 		var mind = VitaVehicleSimulation.slowest_wheel(c_pws)
 		var what = 0.0

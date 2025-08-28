@@ -1,6 +1,7 @@
 @tool
 extends Node
 
+# TODO: find why these are here and are unused, maybe something accesses the global?
 var misc_smoke = true
 
 var GearAssistant = 2 # 0 = manual, 1 = semi-manual, 2 = auto
