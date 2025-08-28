@@ -20,7 +20,6 @@ config/icon="res://icon.png"
 
 VitaVehicleSimulation="*res://MAIN/vitavehicle.gd"
 misc_graphics_settings="*res://MISC/autoload/graphics.gd"
-Helpers="*res://addons/g_classes_unit_tested/globals/helpers.gd"
 
 [display]
 
