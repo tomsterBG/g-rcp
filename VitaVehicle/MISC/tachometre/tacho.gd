@@ -70,9 +70,8 @@ func _ready():
 				d.color = Color(1,0,0)
 
 func _process(_delta):
-	$tacho/needle.rotation_degrees = -120.0 +240.0*(abs(currentrpm)/RPM_Range)
+	$tacho/needle.rotation_degrees = remap(abs(currentrpm), 0.0, RPM_Range, -120.0, 120.0)
 	
-	$turbo/needle.rotation_degrees = -90.0 +180.0*(currentpsi/Max_PSI)
+	$turbo/needle.rotation_degrees = remap(currentpsi, 0.0, Max_PSI, -90.0, 90.0)
 	
-	if $turbo/needle.rotation_degrees<-90.0:
-		$turbo/needle.rotation_degrees = -90.0
+	$turbo/needle.rotation_degrees = max($turbo/needle.rotation_degrees, -90.0)

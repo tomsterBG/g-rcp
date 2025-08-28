@@ -848,13 +848,10 @@ func aero():
 	var drag = DragCoefficient
 	var df = Downforce
 	
-#	var veloc = global_transform.basis.orthonormalized().xform_inv(linear_velocity)
 	var veloc = global_transform.basis.orthonormalized().transposed() * (linear_velocity)
 	
-#	var torq = global_transform.basis.orthonormalized().xform_inv(Vector3(1,0,0))
 	var torq = global_transform.basis.orthonormalized().transposed() * (Vector3(1,0,0))
 	
-#	apply_torque_impulse(global_transform.basis.orthonormalized().xform( Vector3(((-veloc.length()*0.3)*LiftAngle),0,0)  ) )
 	apply_torque_impulse(global_transform.basis.orthonormalized() * ( Vector3(((-veloc.length()*0.3)*LiftAngle),0,0)  ) )
 	
 	var vx = veloc.x*0.15
@@ -862,15 +859,11 @@ func aero():
 	var vz = veloc.y*0.15
 	var vl = veloc.length()*0.15
 	
-#	var forc = global_transform.basis.orthonormalized().xform(Vector3(1,0,0))*(-vx*drag)
-	var forc = global_transform.basis.orthonormalized() * (Vector3(1,0,0))*(-vx*drag)
-#	forc += global_transform.basis.orthonormalized().xform(Vector3(0,0,1))*(-vy*drag)
-	forc += global_transform.basis.orthonormalized() * (Vector3(0,0,1))*(-vy*drag)
-#	forc += global_transform.basis.orthonormalized().xform(Vector3(0,1,0))*(-vl*df -vz*drag)
-	forc += global_transform.basis.orthonormalized() * (Vector3(0,1,0))*(-vl*df -vz*drag)
+	var forc = global_transform.basis.orthonormalized() * Vector3(-vx*drag,0,0)
+	forc += global_transform.basis.orthonormalized() * Vector3(0,0,-vy*drag)
+	forc += global_transform.basis.orthonormalized() * Vector3(0,-vl*df -vz*drag,0)
 	
 	if has_node("DRAG_CENTRE"):
-#		apply_impulse(global_transform.basis.orthonormalized().xform($DRAG_CENTRE.position),forc)
 		apply_impulse(forc, global_transform.basis.orthonormalized() * ($DRAG_CENTRE.position))
 	else:
 		apply_central_impulse(forc)
@@ -903,9 +896,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("toggle_debug_mode"):
 		Debug_Mode = !Debug_Mode
 	
-#	velocity = global_transform.basis.orthonormalized().xform_inv(linear_velocity)
 	velocity = global_transform.basis.orthonormalized().transposed() * (linear_velocity)
-#	rvelocity = global_transform.basis.orthonormalized().xform_inv(angular_velocity)
 	rvelocity = global_transform.basis.orthonormalized().transposed() * (angular_velocity)
 	
 	mass = Weight/10.0
@@ -914,7 +905,6 @@ func _physics_process(_delta):
 	gforce = (linear_velocity - pastvelocity)*((0.30592/9.806)*60.0)
 	pastvelocity = linear_velocity
 	
-#	gforce = global_transform.basis.orthonormalized().xform_inv(gforce)
 	gforce = global_transform.basis.orthonormalized().transposed() * (gforce)
 	
 	controls()

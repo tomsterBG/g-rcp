@@ -87,7 +87,7 @@ func _process(_delta):
 	
 	ran = true
 	if (global_transform.origin - g).length_squared()>0.01:
-		look_at(g,Vector3(0,1,0)) # WARNING BUG: Colinear vectors.
+		look_at(g,Vector3(0,1,0)) # WARNING BUG: Colinear vectors. BAD: When falling down, node and target are in the same position because of Y being up. This causes a failure error.
 	
 	g = global_transform.origin
 	var ppos = global_transform

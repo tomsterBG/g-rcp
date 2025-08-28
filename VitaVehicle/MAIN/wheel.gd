@@ -358,9 +358,7 @@ func _physics_process(_delta):
 		var distx = velocity2.x
 		
 		var compensate2 = suspforce
-#		var grav_incline = $geometry.global_transform.basis.orthonormalized().xform_inv(Vector3(0,1,0)).x
 		var grav_incline = ($geometry.global_transform.basis.orthonormalized().transposed() * (Vector3(0,1,0))).x
-#		var grav_incline2 = $geometry.global_transform.basis.orthonormalized().xform_inv(Vector3(0,1,0)).z
 		var grav_incline2 = ($geometry.global_transform.basis.orthonormalized().transposed() * (Vector3(0,1,0))).z
 		compensate = grav_incline2*(compensate2/tyre_stiffness)
 		
@@ -473,7 +471,6 @@ func _physics_process(_delta):
 		var distx = velocity2.x
 		
 		var compensate2 = directional_force.y
-#		var grav_incline = $geometry.global_transform.basis.orthonormalized().xform_inv(Vector3(0,1,0)).x
 		var grav_incline = ($geometry.global_transform.basis.orthonormalized().transposed() * (Vector3(0,1,0))).x
 		
 		distx -= (grav_incline*(compensate2/tyre_stiffness))*1.1
@@ -551,18 +548,12 @@ func _physics_process(_delta):
 	
 	$animation.position = $geometry.position
 		
-#	var forces = $velocity2.global_transform.basis.orthonormalized().xform(Vector3(0,0,1))*directional_force.z + $velocity2.global_transform.basis.orthonormalized().xform(Vector3(1,0,0))*directional_force.x + $velocity2.global_transform.basis.orthonormalized().xform(Vector3(0,1,0))*directional_force.y
 	var forces = ($velocity2.global_transform.basis.orthonormalized() * (Vector3(0,0,1)))*directional_force.z + ($velocity2.global_transform.basis.orthonormalized() * (Vector3(1,0,0)))*directional_force.x + ($velocity2.global_transform.basis.orthonormalized() * (Vector3(0,1,0)))*directional_force.y
 	
 	
-#	car.apply_impulse(hitposition-car.global_transform.origin,forces)
 	car.apply_impulse(forces,hitposition-car.global_transform.origin)
 	
 	# torque
 	
 	var torqed = (wheelpower*w_weight)/4.0
-	
 	wv_ds = wv
-	
-#	car.apply_impulse($geometry.global_transform.origin-car.global_transform.origin +$velocity2.global_transform.basis.orthonormalized().xform(Vector3(0,0,1)),$velocity2.global_transform.basis.orthonormalized().xform(Vector3(0,1,0))*torqed)
-#	car.apply_impulse($geometry.global_transform.origin-car.global_transform.origin -$velocity2.global_transform.basis.orthonormalized().xform(Vector3(0,0,1)),$velocity2.global_transform.basis.orthonormalized().xform(Vector3(0,1,0))*-torqed)

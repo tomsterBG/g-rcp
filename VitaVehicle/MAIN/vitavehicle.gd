@@ -119,7 +119,6 @@ func suspension(own,maxcompression,incline_free,incline_impact,rest,      elasti
 
 	own.angle = (own.get_node("geometry").rotation_degrees.z -(-own.c_camber*float(own.position.x>0.0) + own.c_camber*float(own.position.x<0.0)) +(-own.cambered*float(own.position.x>0.0) + own.cambered*float(own.position.x<0.0))*own.A_Geometry2)/90.0
 
-#	var incline = (own.get_collision_normal()-own.global_transform.basis.orthonormalized().xform(Vector3(0,1,0))).length()
 	var incline = (own.get_collision_normal()-(own.global_transform.basis.orthonormalized() * Vector3(0,1,0))).length()
 		
 	incline /= 1-incline_free
