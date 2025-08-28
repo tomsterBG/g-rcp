@@ -93,4 +93,3 @@ func _input(event):
 			if event.is_action_released("gas_mouse"):
 				x_drag_unlocked = false
 				y_drag_unlocked = false
-			

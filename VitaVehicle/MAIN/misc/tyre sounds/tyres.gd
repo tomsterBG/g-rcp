@@ -32,7 +32,7 @@ func most_skidding(array):
 		
 		if val == abs(i.skvol):
 			obj = i
-
+	
 	return obj
 
 func _physics_process(delta):
@@ -46,25 +46,20 @@ func _physics_process(delta):
 	
 	var roll = abs(wheel.wv*wheel.w_size) - wheel.velocity.length()
 	
-	if length>2.0:
-		length = 2.0
-
+	length = min(length, 2.0)
+	
 	width -= (width - (1.0 -(roll/10.0 -1.0)))*0.05
-
-	if width>1.0:
-		width = 1.0
-	elif width<0.0:
-		width = 0.0
-		
+	
+	width = clamp(width, 0.0, 1.0)
+	
 	var total = 0.0
-
+	
 	for i in wheels:
 		total += i.skvol
-
+	
 	total /= 10.0
-	if total>1.0:
-		total = 1.0
-
+	total = min(total, 1.0)
+	
 #	$roll0.pitch_scale = 1.0    /(get_parent().linear_velocity.length()/500.0 +1.0)
 	$roll1.pitch_scale = 1.0    /(get_parent().linear_velocity.length()/5000.0 +1.0)
 	$roll2.pitch_scale = 1.0    /(get_parent().linear_velocity.length()/5000.0 +1.0)
@@ -73,15 +68,11 @@ func _physics_process(delta):
 	$peel2.pitch_scale = 1.1 -total*0.1    /(get_parent().linear_velocity.length()/5000.0 +1.0)
 	
 	var drit = (get_parent().linear_velocity.length()*wheel.stress)/1000.0 -0.1
-	if drit>0.5:
-		drit = 0.5
-
+	drit = min(drit, 0.5)
+	
 	drit += wheel.skvol/2.0 -0.1
-
-	if drit>1.0:
-		drit = 1.0
-	elif drit<0.0:
-		drit = 0.0
+	
+	drit = clamp(drit, 0.0, 1.0)
 	
 	drit *= dirt
 	
@@ -94,14 +85,11 @@ func _physics_process(delta):
 			var dist = abs(i.length -length)
 			
 			var dist2 = abs(i.width -width)
-
+			
 			dist *= abs(dist)
 			dist2 *= abs(dist2)
 			
 			var vol = 1.0-(dist + dist2)
-			if vol<0.0:
-				vol = 0.0
-			elif vol>1.0:
-				vol = 1.0
+			vol = clamp(vol, 0.0, 1.0)
 			i.volume_db = linear_to_db(((vol*(1.0-dirt))*i.volume)*0.35)
 			i.max_db = i.volume_db

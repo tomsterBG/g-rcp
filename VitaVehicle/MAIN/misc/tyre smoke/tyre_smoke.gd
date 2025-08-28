@@ -21,13 +21,9 @@ func _physics_process(delta):
 	
 	var spin = wheel_self.slip_perc.y
 	var j = abs(wheel_self.wv)
-	if j>10.0:
-		j = 10.0
-	if spin>j:
-		spin = j
-	elif spin<-j:
-		spin = -j
-		
+	j = min(j, 10.0)
+	spin = clamp(spin, -j, j)
+	
 	direction.z += spin
 
 	for i in $static.get_children():

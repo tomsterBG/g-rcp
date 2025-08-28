@@ -115,8 +115,3 @@ func _process(_delta):
 					current_trail.surface_add_vertex(i[1] -global_transform.origin)
 				
 			current_trail.surface_end()
-
-
-
-
-

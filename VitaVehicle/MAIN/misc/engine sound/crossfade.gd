@@ -38,18 +38,12 @@ func _physics_process(_delta):
 	
 	volume = 0.5 +get_parent().throttle*0.5
 	fade = (get_node("100500").pitch_scale  -0.22222)*(crossfade_influence +float(get_parent().throttle)*crossfade_throttle +float(get_parent().vvt)*crossfade_vvt)
-		
-	if fade<0.0:
-		fade = 0.0
-	elif fade>childcount-1.0:
-		fade = childcount-1.0
 	
-	vacuum = (get_parent().gaspedal-get_parent().throttle)*4
+	fade = clamp(fade, 0.0, childcount-1.0)
 	
-	if vacuum<0: # TODO: learn how these work and if it is what i think, just use clamping setters
-		vacuum = 0
-	elif vacuum>1:
-		vacuum = 1
+	vacuum = (get_parent().gaspedal-get_parent().throttle)*4.0
+	
+	vacuum = clamp(vacuum, 0.0, 1.0)
 	
 	var sfk = 1.0-(vacuum*get_parent().throttle)
 	
@@ -72,19 +66,12 @@ func _physics_process(_delta):
 		dist *= abs(dist)
 		
 		var vol = 1.0-dist
-		if vol<0.0:
-			vol = 0.0
-		elif vol>1.0:
-			vol = 1.0
+		vol = clamp(vol, 0.0, 1.0)
 		var db = linear_to_db((vol*maxvol)*(volume*(overall_volume)))
-		if db<-60.0:
-			db = -60.0
-			
+		db = max(db, -60.0)
+		
 		i.volume_db = db
 		i.max_db = i.volume_db
 		var pit = abs(pitch*maxpitch)
-		if pit>5.0:
-			pit = 5.0
-		elif pit<0.01:
-			pit = 0.01
+		pit = clamp(pit, 0.01, 5.0)
 		i.pitch_scale = pit

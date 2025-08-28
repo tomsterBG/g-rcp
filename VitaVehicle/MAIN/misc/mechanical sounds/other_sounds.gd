@@ -64,9 +64,8 @@ func _physics_process(delta):
 
 	fueltrace -= fueltrace*backfire_FuelDecay
 	
-	if fueltrace<0.0:
-		fueltrace = 0.0
-		
+	fueltrace = max(fueltrace, 0.0)
+	
 	
 	if has_node(engine_sound):
 		get_node(engine_sound).pitch_influence -= (get_node(engine_sound).pitch_influence - 1.0)*0.5
@@ -75,12 +74,10 @@ func _physics_process(delta):
 		if fueltrace>randf_range(air*backfire_BackfirePrevention +backfire_BackfireThreshold,60.0/backfire_BackfireRate):
 			rand = 0.1
 			var ft = fueltrace
-			if ft<10:
-				ft = 10
+			ft = max(ft, 10.0)
 			$backfire.play()
 			var yed = 1.5-ft*0.1
-			if yed<1.0:
-				yed = 1.0
+			yed = max(yed, 1.0)
 			$backfire.pitch_scale = randf_range(yed*1.25,yed*1.5)
 			$backfire.volume_db = linear_to_db((ft*backfire_Volume)*0.1)
 			$backfire.max_db = $backfire.volume_db
@@ -102,54 +99,42 @@ func _physics_process(delta):
 		$scwhine.pitch_scale = wh
 	else:
 		$scwhine.volume_db = linear_to_db(0.0)
-
-
+	
+	
 	var dist = blow_psi - get_parent().turbopsi
 	blow_psi -= (blow_psi - get_parent().turbopsi)*BlowOffWhineReduction
 	blow_inertia += blow_psi - get_parent().turbopsi
 	blow_inertia -= (blow_inertia - (blow_psi - get_parent().turbopsi))*BlowDamping
 	blow_psi -= blow_inertia*BlowOffBounceSpeed
-
+	
 	if blow_psi>get_parent().MaxPSI:
 		blow_psi = get_parent().MaxPSI
-		
-		
-	var blowvol = dist
-	if blowvol<0.0:
-		blowvol = 0.0
-	elif blowvol>1.0:
-		blowvol = 1.0
-		
-	var spoolvol = get_parent().turbopsi/10.0
-	if spoolvol<0.0:
-		spoolvol = 0.0
-	elif spoolvol>1.0:
-		spoolvol = 1.0
-
-	spoolvol += (abs(get_parent().rpm)*(TurboNoiseRPMAffection/1000.0))*spoolvol
-
 	
-
+	
+	var blowvol = dist
+	blowvol = clamp(blowvol, 0.0, 1.0)
+	
+	var spoolvol = get_parent().turbopsi/10.0
+	spoolvol = clamp(spoolvol, 0.0, 1.0)
+	
+	spoolvol += (abs(get_parent().rpm)*(TurboNoiseRPMAffection/1000.0))*spoolvol
+	
+	
+	
 	var blow = linear_to_db(volume*(blowvol*BlowOffVolume2))
-	if blow<-60.0:
-		blow = -60.0
+	blow = max(blow, -60.0)
 	var spool = linear_to_db(volume*(spoolvol*SpoolVolume))
-	if spool<-60.0:
-		spool = -60.0
-
+	spool = max(spool, -60.0)
+	
 	$blow.volume_db = blow
 	$spool.volume_db = spool
 	
 	$blow.max_db = $blow.volume_db
 	$spool.max_db = $spool.volume_db
 	var yes = blowvol*BlowOffVolume
-	if yes>1.0:
-		yes = 1.0
-	elif yes<0.0:
-		yes = 0.0
+	yes = clamp(yes, 0.0, 1.0)
 	var whistle = linear_to_db(yes)
-	if whistle<-60.0:
-		whistle = -60.0
+	whistle = max(whistle, -60.0)
 	$whistle.volume_db = whistle
 	$whistle.max_db = $whistle.volume_db
 	var wps = 1.0
@@ -162,30 +147,20 @@ func _physics_process(delta):
 	$whistle.pitch_scale = wps
 	$spool.pitch_scale = SpoolPitch +spoolvol*0.5
 	$blow.pitch_scale = BlowPitch
-
-
+	
+	
 	var h = get_parent().whinepitch/200.0
-	if h>1.0:
-		h = 1.0
-	elif h<0.5:
-		h = 0.5
-		
+	h = clamp(h, 0.5, 1.0)
+	
 	var wlow = linear_to_db(((get_parent().gearstress*get_parent().GearGap)/160000.0)*((1.0-h)*0.5))
-	if wlow<-60.0:
-		wlow = -60.0
+	wlow = max(wlow, -60.0)
 	$wlow.volume_db = wlow
 	$wlow.max_db = $wlow.volume_db
 	if get_parent().whinepitch/50.0>0.0001:
 		$wlow.pitch_scale = get_parent().whinepitch/50.0
 	var whigh = linear_to_db(((get_parent().gearstress*get_parent().GearGap)/80000.0)*0.5)
-	if whigh<-60.0:
-		whigh = -60.0
+	whigh = max(whigh, -60.0)
 	$whigh.volume_db = whigh
 	$whigh.max_db = $whigh.volume_db
 	if get_parent().whinepitch/100.0>0.0001:
 		$whigh.pitch_scale = get_parent().whinepitch/100.0
-
-
-
-
-

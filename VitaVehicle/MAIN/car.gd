@@ -3,6 +3,7 @@ extends RigidBody3D
 
 @export var Debug_Mode :bool = false
 
+# TODO: fix why are controls in each car and not in one place per user?
 # controls
 @export var Use_Global_Control_Settings :bool = false
 @export var UseMouseSteering :bool = false
