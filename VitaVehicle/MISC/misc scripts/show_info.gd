@@ -9,7 +9,7 @@ func _on_info_pressed():
 	if visible:
 		visible = false
 	else:
-		Input.action_press("ui_cancel") # TODO BUG: fix this hack in every single script that uses it
+		Input.action_press("ui_cancel") # TODO BUG: fix this hack in every single script that uses it, can't use this with _input as per the documentation, use parse_input_event instead
 		await get_tree().create_timer(0.1).timeout
 		Input.action_release("ui_cancel")
 		visible = true

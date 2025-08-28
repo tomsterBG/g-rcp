@@ -1,3 +1,6 @@
+res://default_bus_layout.tres
 res://default_env.tres
 res://world.tscn
-res://default_bus_layout.tres
+res://MISC/misc scripts/show_info.gd
+res://MISC/scene swapper/scenes/Test Scene/scene.tscn
+res://MISC/car swapper/cars/Eclipse SRC/scene.tscn

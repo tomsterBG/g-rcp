@@ -36,7 +36,10 @@ I really love this game because it runs well on my laptop and feels good. Maybe 
 - [ ] Content. Cars, maps, sounds, trailers, trucks, hinges, horns, music, everything.
 - [ ] Power loss and sounds due to part wear and misalignment. (basic non-visual damage)
 - [ ] Fuel consumption, tank weight.
-- [ ] Improved stalling behavior.
+- [ ] Improved stalling and starter behavior.
+- [ ] Flywheel weight.
+- [ ] Engine compression.
+- [ ] Better tire grip and slip angle dynamics.
 - [ ] Major refactoring of bigger, project-wide problems.
 - [ ] AI cars for traffic and racing.
 - [ ] Challenges with goals, races, checkpoints.

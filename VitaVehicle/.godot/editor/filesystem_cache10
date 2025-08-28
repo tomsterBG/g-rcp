@@ -1,34 +1,45 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1755810295
+::res://::1756367138
 base car.tscn::PackedScene/PackedScene::6006632351280429546::1755697817::0::1::::<><><>0<>0<><>::uid://df2i30irlljkl::::res://MAIN/wheel.tscn<>uid://c1qved5286i2u::::res://MAIN/car.gd<>uid://c7m04qiimdydw::::res://MAIN/misc/engine sound/engine.tscn<>uid://del2h14nydk3g::::res://MAIN/misc/textures/rim.jpg<>uid://d1vmrvs3aj84o::::res://MAIN/misc/tyre sounds/tyres.tscn<>uid://c43p6bbeeuq4f::::res://MAIN/misc/mechanical sounds/other_sounds.tscn<>uid://kb7hq7qvuul3::::res://MAIN/misc/backfire_particles/fire.tscn<>uid://1a0k3s3amej8::::res://MAIN/misc/backfire_particles/backfire.png
-default_bus_layout.tres::AudioBusLayout::843813187252370841::1755710900::0::1::::<><><>0<>0<><>::
-default_env.tres::Environment::3574772965805249146::1755715516::0::1::::<><><>0<>0<><>::
+default_bus_layout.tres::AudioBusLayout::843813187252370841::1756366905::0::1::::<><><>0<>0<><>::
+default_env.tres::Environment::3574772965805249146::1756367122::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile/TextFile::-1::1681208134::0::1::::<><><>0<>0<><>::
 Grid.png::CompressedTexture2D/CompressedTexture2D::787967628881786892::1681208134::1755697806::1::::<><><>0<>0<>c4bf73ddb267012690cff5ce461ea90b<>res://.godot/imported/Grid.png-2111b632e1715715316a25911ba3fa72.s3tc.ctex::
 icon.png::CompressedTexture2D/CompressedTexture2D::5086476943662964858::1681208134::1755697806::1::::<><><>0<>0<>06e7e09a4550584f7b045c2f837ff894<>res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex::
 logo.png::CompressedTexture2D/CompressedTexture2D::4407219616870203296::1681208134::1755697806::1::::<><><>0<>0<>092f140987a97bae9b57b71f19a7c446<>res://.godot/imported/logo.png-cca8726399059c8d4f806e28e356b14d.ctex::
 morning_env.scn::PackedScene/PackedScene::3285800326529799812::1755697817::0::1::::<><><>0<>0<><>::
 TEMPLATE.tscn::PackedScene/PackedScene::7693953741836897403::1755697817::0::1::::<><><>0<>0<><>::uid://crtwme8ggggra::::res://base car.tscn<>uid://c6wt0orv73xy1::::res://MAIN/misc/camera.gd<>uid://ddlr528rnt21u::::res://MAIN/ground_surface_variables.gd<>uid://cv0iolhv1qxsn::::res://MISC/scene swapper/scenes/Test Scene/assets/Grid.png
-world.tscn::PackedScene::5607897601783510848::1755711251::0::1::::<><><>0<>0<><>::uid://crtwme8ggggra::::res://base car.tscn<>uid://c6wt0orv73xy1::::res://MAIN/misc/camera.gd<>uid://b77dj0608nvq0::::res://MISC/debugger.tscn<>uid://diafjore21wn::::res://MISC/scene swapper/scenes/Test Scene/scene.tscn<>uid://bm2wwe6lx2b53::::res://morning_env.scn<>uid://l32g0g53ug0g::::res://MISC/mobile controls/mobile.tscn<>uid://b315i7ikjj32c::::res://logo.png
-::res://addons/::1681828772
-::res://addons/vitavehicle_ui/::1755715245
-api_references.gd::GDScript/GDScript::1459898484204601217::1681208134::0::1::::<>VBoxContainer<><>0<>1<><>::
-folds.gd::GDScript::8186387824818756073::1755715144::0::1::::<>Button<><>0<>1<><>::
+world.tscn::PackedScene::5607897601783510848::1756367122::0::1::::<><><>0<>0<><>::uid://crtwme8ggggra::::res://base car.tscn<>uid://c6wt0orv73xy1::::res://MAIN/misc/camera.gd<>uid://b77dj0608nvq0::::res://MISC/debugger.tscn<>uid://diafjore21wn::::res://MISC/scene swapper/scenes/Test Scene/scene.tscn<>uid://bm2wwe6lx2b53::::res://morning_env.scn<>uid://l32g0g53ug0g::::res://MISC/mobile controls/mobile.tscn<>uid://b315i7ikjj32c::::res://logo.png
+::res://addons/::1756366691
+::res://addons/g_classes_unit_tested/::1756367062
+plugin.cfg::TextFile/TextFile::-1::1756366528::0::1::::<><><>0<>0<><>::
+script.gd::GDScript::7306229042248462323::1756367062::0::1::::<>EditorPlugin<><>0<>1<><>::
+::res://addons/g_classes_unit_tested/components/::1756366380
+health plus.gd::GDScript/GDScript::230846012043413312::1756326231::0::1::::HealthPlus<>Health<><>0<>1<><>::
+health.gd::GDScript/GDScript::667157092325065716::1756324769::0::1::::Health<>Node<>res://addons/g_classes_unit_tested/components/health.svg<>0<>1<><>::
+health.svg::CompressedTexture2D/CompressedTexture2D::2001847735989896392::1749364282::1756366380::1::::<><><>0<>0<>751bfbd919aade3464190ee227fc4494<>res://.godot/imported/health.svg-c6652f9b55ab7ec40cd272530bc086f4.ctex::
+README.md::TextFile/TextFile::-1::1756328401::0::1::::<><><>0<>0<><>::
+::res://addons/g_classes_unit_tested/globals/::1756328442
+helpers.gd::GDScript/GDScript::1146145496584108335::1756328038::0::1::::HelperMethods<>Node<><>0<>0<><>::
+README.md::TextFile/TextFile::-1::1756328442::0::1::::<><><>0<>0<><>::
+::res://addons/vitavehicle_ui/::1756366874
+api_references.gd::GDScript/GDScript::1459898484204601217::1756366874::0::1::::<>VBoxContainer<><>0<>1<><>::
+folds.gd::GDScript/GDScript::8186387824818756073::1755715144::0::1::::<>Button<><>0<>1<><>::
 graph.gd::GDScript/GDScript::5915054400755042457::1681838694::0::1::::<>Control<><>0<>1<><>::
 handler.gd::GDScript/GDScript::5157499619407461553::1681868244::0::1::::<>Control<><>0<>1<><>::
 interface.tscn::PackedScene/PackedScene::4442507923572005845::1755697815::0::1::::<><><>0<>0<><>::uid://b315i7ikjj32c::::res://logo.png<>uid://cqjkc1sj12bs0::::res://addons/vitavehicle_ui/graph.gd<>uid://cfqljat4xxm8x::::res://addons/vitavehicle_ui/handler.gd<>uid://bmloxfe8n3wjv::::res://addons/vitavehicle_ui/tune_vars.gd<>uid://btyvoi7jkhec0::::res://FONT/DroidSans.ttf<>uid://luy46vxwmlu4::::res://FONT/DroidSans-Bold.ttf<>uid://u2gkx3t0la62::::res://addons/vitavehicle_ui/api_references.gd<>uid://dovsu12t70hoj::::res://addons/vitavehicle_ui/folds.gd
-plugin.cfg::TextFile/TextFile::-1::1681826638::0::1::::<><><>0<>0<><>::
-script.gd::GDScript::3655789646330053708::1755715245::0::1::::<>EditorPlugin<><>0<>1<><>::
+plugin.cfg::TextFile/TextFile::-1::1756366432::0::1::::<><><>0<>0<><>::
+script.gd::GDScript/GDScript::3655789646330053708::1755715245::0::1::::<>EditorPlugin<><>0<>1<><>::
 tune_vars.gd::GDScript/GDScript::3252286344116526319::1681208134::0::1::::<>Node<><>0<>0<><>::
 ::res://FONT/::1755708582
 Apache License.txt::TextFile/TextFile::-1::1681208134::0::1::::<><><>0<>0<><>::
 DroidSans-Bold.ttf::FontFile/FontFile::814875492688835281::1681208134::1755697805::1::::<><><>0<>0<>143303c509ac65dfcd868178d6b07084<>res://.godot/imported/DroidSans-Bold.ttf-8053c0f387f0ef983487a40702c1e286.fontdata::
 DroidSans.ttf::FontFile/FontFile::3770854306919019749::1681208134::1755697805::1::::<><><>0<>0<>32ea740e894e28cb1df2ad2b714cf394<>res://.godot/imported/DroidSans.ttf-e94259dbfadbf59663aabf21f05d923d.fontdata::
 README.md::TextFile/TextFile::-1::1755708582::0::1::::<><><>0<>0<><>::
-::res://MAIN/::1755711251
+::res://MAIN/::1755847153
 car.gd::GDScript/GDScript::6632063751249982898::1755704329::0::1::::<>RigidBody3D<><>0<>0<><>::
-ground_surface_variables.gd::GDScript/GDScript::7393623969881787708::1681208134::0::1::::<>StaticBody3D<><>0<>0<><>::
-vitavehicle.gd::GDScript::4618283731088444889::1755711251::0::1::::<>Node<><>0<>1<><>::
+ground_surface_variables.gd::GDScript/GDScript::7393623969881787708::1755847153::0::1::::<>StaticBody3D<><>0<>0<><>::
+vitavehicle.gd::GDScript/GDScript::4618283731088444889::1755711251::0::1::::<>Node<><>0<>1<><>::
 wheel.gd::GDScript/GDScript::1213464240208131307::1681826052::0::1::::<>RayCast3D<><>0<>0<><>::
 wheel.tscn::PackedScene/PackedScene::7566481533030281771::1755697815::0::1::::<><><>0<>0<><>::uid://rj2txbckbu08::::res://MAIN/wheel.gd<>uid://q8oxthp1fyj5::::res://MAIN/misc/tyre smoke/smoke.tscn<>uid://3vxrexntr43u::::res://MAIN/misc/forces debug/forces.gd<>uid://bg3o1u5r81wfs::::res://MAIN/misc/tyre marks/tyremark.tscn
 ::res://MAIN/misc/::1755697805
@@ -45,7 +56,7 @@ fire.tscn::PackedScene/PackedScene::705909149023427794::1755697815::0::1::::<><>
 6.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::193571348704226654::1681208134::1755697805::1::::<><><>0<>0<>a5bd06292ebb57700e73d5405e0f849c<>res://.godot/imported/6.ogg-5dffa42d5906a5ad9534352010aab3f3.oggvorbisstr::
 7.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::1004854756886319015::1681208134::1755697805::1::::<><><>0<>0<>472403596f43c4ba16998aa35efc9aae<>res://.godot/imported/7.ogg-33d11cf294eee5ababb5c546d0b3635a.oggvorbisstr::
 8.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::781180541865940057::1681208134::1755697805::1::::<><><>0<>0<>e235436adbdd056955508bfb5eaedd6c<>res://.godot/imported/8.ogg-623ed1418a1f54d9c4561132cf84ab80.oggvorbisstr::
-crossfade.gd::GDScript::1251146580671342381::1755715328::0::1::::<>Node3D<><>0<>0<><>::
+crossfade.gd::GDScript/GDScript::1251146580671342381::1755715328::0::1::::<>Node3D<><>0<>0<><>::
 engine.tscn::PackedScene/PackedScene::7045227462806062132::1755699649::0::1::::<><><>0<>0<><>::uid://r3cg32nf73h6::::res://MAIN/misc/engine sound/crossfade.gd<>uid://cevw4kovy5m3::::res://MAIN/misc/engine sound/1.ogg<>uid://08uuk0xwxrsb::::res://MAIN/misc/engine sound/2.ogg<>uid://bpxk5r8icmm1r::::res://MAIN/misc/engine sound/3.ogg<>uid://dgd78o52ndm0m::::res://MAIN/misc/engine sound/4.ogg<>uid://bdig1v76vwarp::::res://MAIN/misc/engine sound/5.ogg<>uid://c01defmpipfi::::res://MAIN/misc/engine sound/6.ogg<>uid://ok02ts6abd24::::res://MAIN/misc/engine sound/7.ogg<>uid://len6um33bvft::::res://MAIN/misc/engine sound/8.ogg
 ::res://MAIN/misc/forces debug/::1755697805
 forces.gd::GDScript/GDScript::2010066650270829656::1681208134::0::1::::<>MeshInstance3D<><>0<>0<><>::
@@ -83,14 +94,14 @@ tyres.gd::GDScript/GDScript::2967197411127667242::1681208134::0::1::::<>Node3D<>
 tyres.tscn::PackedScene/PackedScene::9028284012982398516::1755699649::0::1::::<><><>0<>0<><>::uid://bijlkp4w1j14a::::res://MAIN/misc/tyre sounds/tyres.gd<>uid://dfcxqqw350ntr::::res://MAIN/misc/tyre sounds/vars.gd<>uid://gjka6jqu3b8p::::res://MAIN/misc/tyre sounds/offroad.ogg<>uid://crqq84gd1fbsh::::res://MAIN/misc/tyre sounds/peel0.ogg<>uid://04ebjdn23ih8::::res://MAIN/misc/tyre sounds/roll0.ogg<>uid://7pqd0tyxcjgj::::res://MAIN/misc/tyre sounds/roll1.ogg<>uid://dp1pkuseb4gfn::::res://MAIN/misc/tyre sounds/peel1.ogg<>uid://dyf7guf22o6t0::::res://MAIN/misc/tyre sounds/roll2.ogg<>uid://d3b45tmngsrf2::::res://MAIN/misc/tyre sounds/peel2.ogg
 vars.gd::GDScript/GDScript::7515760963986271347::1681208134::0::1::::<>AudioStreamPlayer3D<><>0<>0<><>::
 ::res://MISC/::1755714409
-debugger.tscn::PackedScene::4698723353516704613::1755714409::0::1::::<><><>0<>0<><>::uid://b315i7ikjj32c::::res://logo.png<>uid://d2kf38826fkpg::::res://MISC/misc scripts/debug.gd<>uid://c55dbe3spnjag::::res://MISC/scene swapper/scene swapper.gd<>uid://64w6gkk8hbbc::::res://MISC/graphics_config/graphics config.gd<>uid://bx78k1bed1fks::::res://MISC/misc scripts/show_info.gd<>uid://cjs1u3f47s7p1::::res://MISC/controls config/slider_variables.gd<>uid://btyvoi7jkhec0::::res://FONT/DroidSans.ttf<>uid://c2frarges64u4::::res://MISC/controls config/run.gd<>uid://ddgkkei8jbfuy::::res://MISC/controls config/check_variables.gd<>uid://bxaxnjc7r0jhv::::res://MISC/car swapper/car swapper.gd<>uid://cr5l3r8wqkyn6::::res://MAIN/misc/textures/sw.png<>uid://b7tkt12prqch8::::res://MAIN/misc/textures/sw_desired.png<>uid://b1vo60v1pjs6w::::res://MISC/tachometre/tacho.tscn<>uid://c1wabqtdv36jo::::res://MISC/vertical progress bar/bar.tscn<>uid://cnjbclsh2lklc::::res://MISC/visual gravity system/vgs.tscn<>uid://2ojbutsqhnh4::::res://MISC/graph/display.tscn
+debugger.tscn::PackedScene/PackedScene::4698723353516704613::1755714409::0::1::::<><><>0<>0<><>::uid://b315i7ikjj32c::::res://logo.png<>uid://d2kf38826fkpg::::res://MISC/misc scripts/debug.gd<>uid://c55dbe3spnjag::::res://MISC/scene swapper/scene swapper.gd<>uid://64w6gkk8hbbc::::res://MISC/graphics_config/graphics config.gd<>uid://bx78k1bed1fks::::res://MISC/misc scripts/show_info.gd<>uid://cjs1u3f47s7p1::::res://MISC/controls config/slider_variables.gd<>uid://btyvoi7jkhec0::::res://FONT/DroidSans.ttf<>uid://c2frarges64u4::::res://MISC/controls config/run.gd<>uid://ddgkkei8jbfuy::::res://MISC/controls config/check_variables.gd<>uid://bxaxnjc7r0jhv::::res://MISC/car swapper/car swapper.gd<>uid://cr5l3r8wqkyn6::::res://MAIN/misc/textures/sw.png<>uid://b7tkt12prqch8::::res://MAIN/misc/textures/sw_desired.png<>uid://b1vo60v1pjs6w::::res://MISC/tachometre/tacho.tscn<>uid://c1wabqtdv36jo::::res://MISC/vertical progress bar/bar.tscn<>uid://cnjbclsh2lklc::::res://MISC/visual gravity system/vgs.tscn<>uid://2ojbutsqhnh4::::res://MISC/graph/display.tscn
 ::res://MISC/autoload/::1755697805
 graphics.gd::GDScript/GDScript::5725679670915341123::1694884444::0::1::::<>Node<><>0<>0<><>::
 ::res://MISC/car swapper/::1755697805
 car swapper.gd::GDScript/GDScript::4002184270799642879::1682150104::0::1::::<>Control<><>0<>0<><>::
 ::res://MISC/car swapper/cars/::1694976282
-::res://MISC/car swapper/cars/Eclipse SRC/::1755699559
-scene.tscn::PackedScene/PackedScene::6631471648446349857::1755699559::0::1::::<><><>0<>0<><>::uid://df2i30irlljkl::::res://MAIN/wheel.tscn<>uid://c1qved5286i2u::::res://MAIN/car.gd<>uid://c7m04qiimdydw::::res://MAIN/misc/engine sound/engine.tscn<>uid://ckt75vv2etwoa::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/1.ogg<>uid://d1vmrvs3aj84o::::res://MAIN/misc/tyre sounds/tyres.tscn<>uid://cqdajib2yo6rv::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/2.ogg<>uid://c43p6bbeeuq4f::::res://MAIN/misc/mechanical sounds/other_sounds.tscn<>uid://d6eb4cnoayb7::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/3.ogg<>uid://bgadta1w1wxsb::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/4.ogg<>uid://css4spfpu75vb::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/5.ogg<>uid://cxwcusr1xcuau::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/6.ogg<>uid://ckhm05fdvk5rf::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/7.ogg<>uid://bvu4bihqkrgdt::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/8.ogg
+::res://MISC/car swapper/cars/Eclipse SRC/::1756366784
+scene.tscn::PackedScene/PackedScene::6631471648446349857::1756366784::0::1::::<><><>0<>0<><>::uid://df2i30irlljkl::::res://MAIN/wheel.tscn<>uid://c1qved5286i2u::::res://MAIN/car.gd<>uid://c7m04qiimdydw::::res://MAIN/misc/engine sound/engine.tscn<>uid://ckt75vv2etwoa::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/1.ogg<>uid://d1vmrvs3aj84o::::res://MAIN/misc/tyre sounds/tyres.tscn<>uid://cqdajib2yo6rv::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/2.ogg<>uid://c43p6bbeeuq4f::::res://MAIN/misc/mechanical sounds/other_sounds.tscn<>uid://d6eb4cnoayb7::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/3.ogg<>uid://bgadta1w1wxsb::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/4.ogg<>uid://css4spfpu75vb::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/5.ogg<>uid://cxwcusr1xcuau::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/6.ogg<>uid://ckhm05fdvk5rf::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/7.ogg<>uid://bvu4bihqkrgdt::::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/8.ogg
 thumbnail.png::CompressedTexture2D/CompressedTexture2D::5547623015528300654::1666053560::1755697806::1::::<><><>0<>0<>8452dcd702a3289b41a184c803c186fa<>res://.godot/imported/thumbnail.png-d72d41ae5f10c1c8969a3bf29e1cd789.ctex::
 ::res://MISC/car swapper/cars/Eclipse SRC/engine sounds/::1755697805
 1.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::5515950635343455660::1684066066::1755697805::1::::<><><>0<>0<>b1ccdb4e3efa6a899936d0f355911abe<>res://.godot/imported/1.ogg-4f69365c613a273cc8d518ec75ef6af4.oggvorbisstr::
@@ -113,7 +124,7 @@ graphics config.gd::GDScript/GDScript::2237112572185526064::1682226046::0::1::::
 ::res://MISC/misc scripts/::1755715511
 debug.gd::GDScript/GDScript::9075359979557436644::1694885764::0::1::::<>Control<><>0<>0<><>::
 interior_feedback_camera.gd::GDScript/GDScript::8739455743386589616::1681060538::0::1::::<>Camera3D<><>0<>0<><>::
-show_info.gd::GDScript::4068847061536787898::1755715511::0::1::::<>Control<><>0<>0<><>::
+show_info.gd::GDScript/GDScript::4068847061536787898::1755715511::0::1::::<>Control<><>0<>0<><>::
 sky_setting.gd::GDScript/GDScript::239619538110701355::1682226294::0::1::::<>WorldEnvironment<><>0<>0<><>::
 ::res://MISC/mobile controls/::1755697815
 mobile.tscn::PackedScene/PackedScene::831531254454007952::1755697815::0::1::::<><><>0<>0<><>::uid://bag4brlbflvfn::::res://MISC/mobile controls/mobile_ctrls.gd<>uid://3waiahkign4m::::res://MISC/mobile controls/assets/gas.png<>uid://ij0lvx0g3fhg::::res://MISC/mobile controls/positioning.gd<>uid://dt2kethnrto6::::res://MISC/mobile controls/assets/brake.png<>uid://co10nnw28an0u::::res://MISC/mobile controls/assets/clutch.png<>uid://b0rcc2epapnjd::::res://MISC/mobile controls/assets/arrow.png<>uid://cnpqwugx4g1x4::::res://MISC/mobile controls/assets/su.png<>uid://cc3nebbysjb4x::::res://MISC/mobile controls/assets/sd.png<>uid://cv8rsjlkkth1a::::res://MISC/mobile controls/assets/hb.png
@@ -143,8 +154,8 @@ roadsurface.png::CompressedTexture2D/CompressedTexture2D::2972301020392803906::1
 roadsurfaceunmarked.jpg::CompressedTexture2D/CompressedTexture2D::4451291156680169434::1591727464::1755697806::1::::<><><>0<>0<>68fe4a220f1f1dc459a0f7081f1cd7e1<>res://.godot/imported/roadsurfaceunmarked.jpg-ef89cc0e49ca51b54a90a165e0ddde41.s3tc.ctex::
 rock2.jpg::CompressedTexture2D/CompressedTexture2D::6467811210832736051::1609876738::1755697806::1::::<><><>0<>0<>173bc2012218f2a41376b8ffc4f7e3a4<>res://.godot/imported/rock2.jpg-e14baebad496c61be50b2653c6df6712.ctex::
 rock2_hd.png::CompressedTexture2D/CompressedTexture2D::4640465855415568890::1630788098::1755697806::1::::<><><>0<>0<>475b79599cbbefbe8fbe9aee9a72c073<>res://.godot/imported/rock2_hd.png-a53bb7336974dfd5484edc246163f034.s3tc.ctex::
-::res://MISC/scene swapper/scenes/Test Scene/::1755697816
-scene.tscn::PackedScene/PackedScene::227090977032352537::1755697816::0::1::::<><><>0<>0<><>::uid://ddlr528rnt21u::::res://MAIN/ground_surface_variables.gd<>uid://cv0iolhv1qxsn::::res://MISC/scene swapper/scenes/Test Scene/assets/Grid.png
+::res://MISC/scene swapper/scenes/Test Scene/::1756366784
+scene.tscn::PackedScene/PackedScene::227090977032352537::1756366784::0::1::::<><><>0<>0<><>::uid://ddlr528rnt21u::::res://MAIN/ground_surface_variables.gd<>uid://cv0iolhv1qxsn::::res://MISC/scene swapper/scenes/Test Scene/assets/Grid.png
 thumbnail.png::CompressedTexture2D/CompressedTexture2D::2767916381323389249::1666215474::1755697806::1::::<><><>0<>0<>3b854ddafa34b75d1bb624d13e6c9966<>res://.godot/imported/thumbnail.png-99316fc53e79d42dd7e9059a08a89021.ctex::
 ::res://MISC/scene swapper/scenes/Test Scene/assets/::1755697806
 Grid.png::CompressedTexture2D/CompressedTexture2D::6298927854253204045::1662408600::1755697806::1::::<><><>0<>0<>62245da3cf8cb0d9286e977912ac4aee<>res://.godot/imported/Grid.png-6ce861df08f21bd59bbd057d594d770c.s3tc.ctex::

@@ -13,4 +13,3 @@ extends StaticBody3D
 @export var ground_builduprate = 0.0
 @export var ground_dirt = false
 @export var drag = 0.0
-
