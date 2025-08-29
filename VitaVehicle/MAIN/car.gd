@@ -282,7 +282,7 @@ var handbrake := false
 var right := false
 var left := false
 var clutch := false
-var c_pws = []
+var c_pws := []
 
 var velocity := Vector3(0,0,0)
 var rvelocity := Vector3(0,0,0)
@@ -325,7 +325,7 @@ func controls():
 	
 	left = Input.is_action_pressed("left")
 	right = Input.is_action_pressed("right")
-	# TODO: definitely can use some Input.get_axis("left", "right") and move_toward()wE method.
+	# TODO: definitely can use some Input.get_axis("left", "right") and move_toward() method.
 	if left:
 		steer_velocity -= 0.01
 	elif right:
@@ -740,107 +740,106 @@ func transmission():
 	clutchpedal = clamp(clutchpedal, 0.0, 1.0)
 
 func drivetrain():
+	rpmcsm -= (rpmcs - resistance)
+	
+	rpmcs += rpmcsm*ClutchElasticity
+	
+	rpmcs -= rpmcs*(1.0-clutchpedal)
+	
+	wob = ClutchWobble*clutchpedal
+	
+	wob *= ratio*WobbleRate
+	
+	rpmcs -= (rpmcs - resistance)*(1.0/(wob +1.0))
+	
+#	torquereadout = multivariate(RiseRPM,TorqueRise,BuildUpTorque,EngineFriction,EngineDrag,OffsetTorque,rpm,DeclineRPM,DeclineRate,FloatRate,turbopsi,TurboAmount,EngineCompressionRatio,TurboEnabled,VVTRPM,VVT_BuildUpTorque,VVT_TorqueRise,VVT_RiseRPM,VVT_OffsetTorque,VVT_FloatRate,VVT_DeclineRPM,VVT_DeclineRate,SuperchargerEnabled,SCRPMInfluence,BlowRate,SCThreshold)
+	if gear<0:
+		rpm -= ((rpmcs*1.0)/clock_mult)*(RevSpeed/1.475)
+	else:
+		rpm += ((rpmcs*1.0)/clock_mult)*(RevSpeed/1.475)
 		
-		rpmcsm -= (rpmcs - resistance)
+	if "":
+		rpm = 7000.0
+		Locking = 0.0
+		CoastLocking = 0.0
+		Centre_Locking = 0.0
+		Centre_CoastLocking = 0.0
+		Preload = 1.0
+		Centre_Preload = 1.0
+		ClutchFloatReduction = 0.0
 		
-		rpmcs += rpmcsm*ClutchElasticity
-		
-		rpmcs -= rpmcs*(1.0-clutchpedal)
-		
-		wob = ClutchWobble*clutchpedal
-		
-		wob *= ratio*WobbleRate
-		
-		rpmcs -= (rpmcs - resistance)*(1.0/(wob +1.0))
-		
-#		torquereadout = multivariate(RiseRPM,TorqueRise,BuildUpTorque,EngineFriction,EngineDrag,OffsetTorque,rpm,DeclineRPM,DeclineRate,FloatRate,turbopsi,TurboAmount,EngineCompressionRatio,TurboEnabled,VVTRPM,VVT_BuildUpTorque,VVT_TorqueRise,VVT_RiseRPM,VVT_OffsetTorque,VVT_FloatRate,VVT_DeclineRPM,VVT_DeclineRate,SuperchargerEnabled,SCRPMInfluence,BlowRate,SCThreshold)
+	gearstress = (abs(resistance)*StressFactor)*clutchpedal
+	var stabled = ratio*0.9 +0.1
+	ds_weight = DSWeight/stabled
+	
+	whinepitch = abs(rpm/ratio)*1.5
+	
+	if resistance>0.0:
+		locked = abs(resistance/ds_weight)*(CoastLocking/100.0) + Preload
+	else:
+		locked = abs(resistance/ds_weight)*(Locking/100.0) + Preload
+	
+	locked = clamp(locked, 0.0, 1.0)
+	
+	
+	if wv_difference>0.0:
+		c_locked = abs(wv_difference)*(Centre_CoastLocking/10.0) + Centre_Preload
+	else:
+		c_locked = abs(wv_difference)*(Centre_Locking/10.0) + Centre_Preload
+	if len(c_pws)<4:
+		c_locked = 0.0
+	c_locked = clamp(c_locked, 0.0, 1.0)
+	
+	var maxd = VitaVehicleSimulation.fastest_wheel(c_pws)
+	var mind = VitaVehicleSimulation.slowest_wheel(c_pws)
+	var what = 0.0
+	
+	var floatreduction = ClutchFloatReduction
+	
+	if dsweightrun>0.0:
+		floatreduction = ClutchFloatReduction/dsweightrun
+	else:
+		floatreduction = 0.0
+	
+	var stabling = -(GearRatioRatioThreshold -ratio*drivewheels_size)*ThresholdStable
+	stabling = max(stabling, 0.0)
+	
+	currentstable = ClutchStable + stabling
+	currentstable *= (RevSpeed/1.475)
+	
+	if dsweightrun>0.0:
+		what = (rpm-(((rpmforce*floatreduction)*pow(currentstable,1.0))/(ds_weight/dsweightrun)))
+	else:
+		what = rpm
+	
+	if gear<0.0:
+		dist = maxd.wv + what/ratio
+	else:
+		dist = maxd.wv - what/ratio
+	
+	dist *= (clutchpedal*clutchpedal)
+	
+	if gear == 0:
+		dist *= 0.0
+	
+	wv_difference = 0.0
+	drivewheels_size = 0.0
+	for i in c_pws:
+		drivewheels_size += i.w_size/len(c_pws)
+		i.c_p = i.W_PowerBias
+		wv_difference += ((i.wv - what/ratio)/(len(c_pws)))*(clutchpedal*clutchpedal)
 		if gear<0:
-			rpm -= ((rpmcs*1.0)/clock_mult)*(RevSpeed/1.475)
+			i.dist = dist*(1-c_locked) + (i.wv + what/ratio)*c_locked
 		else:
-			rpm += ((rpmcs*1.0)/clock_mult)*(RevSpeed/1.475)
-			
-		if "":
-			rpm = 7000.0
-			Locking = 0.0
-			CoastLocking = 0.0
-			Centre_Locking = 0.0
-			Centre_CoastLocking = 0.0
-			Preload = 1.0
-			Centre_Preload = 1.0
-			ClutchFloatReduction = 0.0
-			
-		gearstress = (abs(resistance)*StressFactor)*clutchpedal
-		var stabled = ratio*0.9 +0.1
-		ds_weight = DSWeight/stabled
-		
-		whinepitch = abs(rpm/ratio)*1.5
-		
-		if resistance>0.0:
-			locked = abs(resistance/ds_weight)*(CoastLocking/100.0) + Preload
-		else:
-			locked = abs(resistance/ds_weight)*(Locking/100.0) + Preload
-		
-		locked = clamp(locked, 0.0, 1.0)
-		
-			
-		if wv_difference>0.0:
-			c_locked = abs(wv_difference)*(Centre_CoastLocking/10.0) + Centre_Preload
-		else:
-			c_locked = abs(wv_difference)*(Centre_Locking/10.0) + Centre_Preload
-		if len(c_pws)<4:
-			c_locked = 0.0
-		c_locked = clamp(c_locked, 0.0, 1.0)
-		
-		var maxd = VitaVehicleSimulation.fastest_wheel(c_pws)
-		var mind = VitaVehicleSimulation.slowest_wheel(c_pws)
-		var what = 0.0
-		
-		var floatreduction = ClutchFloatReduction
-		
-		if dsweightrun>0.0:
-			floatreduction = ClutchFloatReduction/dsweightrun
-		else:
-			floatreduction = 0.0
-				
-		var stabling = -(GearRatioRatioThreshold -ratio*drivewheels_size)*ThresholdStable
-		stabling = max(stabling, 0.0)
-		
-		currentstable = ClutchStable + stabling
-		currentstable *= (RevSpeed/1.475)
-		
-		if dsweightrun>0.0:
-			what = (rpm-(((rpmforce*floatreduction)*pow(currentstable,1.0))/(ds_weight/dsweightrun)))
-		else:
-			what = rpm
-			
-		if gear<0.0:
-			dist = maxd.wv + what/ratio
-		else:
-			dist = maxd.wv - what/ratio
-		
-		dist *= (clutchpedal*clutchpedal)
-		
+			i.dist = dist*(1-c_locked) + (i.wv - what/ratio)*c_locked
 		if gear == 0:
-			dist *= 0.0
-		
-		wv_difference = 0.0
-		drivewheels_size = 0.0
-		for i in c_pws:
-			drivewheels_size += i.w_size/len(c_pws)
-			i.c_p = i.W_PowerBias
-			wv_difference += ((i.wv - what/ratio)/(len(c_pws)))*(clutchpedal*clutchpedal)
-			if gear<0:
-				i.dist = dist*(1-c_locked) + (i.wv + what/ratio)*c_locked
-			else:
-				i.dist = dist*(1-c_locked) + (i.wv - what/ratio)*c_locked
-			if gear == 0:
-				i.dist *= 0.0
-		GearAssistant[2] = drivewheels_size
-		resistance = 0.0
-		dsweightrun = dsweight
-		dsweight = 0.0
-		tcsweight = 0.0
-		stress = 0.0
+			i.dist *= 0.0
+	GearAssistant[2] = drivewheels_size
+	resistance = 0.0
+	dsweightrun = dsweight
+	dsweight = 0.0
+	tcsweight = 0.0
+	stress = 0.0
 
 func aero():
 	var drag = DragCoefficient
@@ -865,7 +864,7 @@ func aero():
 		apply_impulse(forc, global_transform.basis.orthonormalized() * ($DRAG_CENTRE.position))
 	else:
 		apply_central_impulse(forc)
-		
+	
 
 func _physics_process(delta):
 	if len(steering_angles)>0:
@@ -918,14 +917,14 @@ func _physics_process(delta):
 	var steeroutput = steer
 	
 	var uhh = pow(max_steering_angle/90.0, 2)
-	uhh *= 0.5	
+	uhh *= 0.5
 	steeroutput *= abs(steer)*(uhh) +(1.0-uhh)
 	
 	if abs(steeroutput)>0.0:
 		steering_geometry = [-Steer_Radius/steeroutput,AckermannPoint]
 	
 	
-	abspump -= 1    
+	abspump -= 1
 	
 	if abspump<0:
 		brake_allowed += ABS[4]
