@@ -14,6 +14,8 @@ Multiplies by 60 to convert to time per second, instead of dividing by delta.
 
 Does (a/b)*(a/b) instead of pow(a/b, 2)
 
+Uses some weird a*float(is_b_more_than_zero) -a*float(is_b_less_than_zero) which simplifies to a*sign(b)
+
 # Bugs
 
 Test these cases to ensure stability:

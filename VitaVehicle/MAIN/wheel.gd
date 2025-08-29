@@ -201,13 +201,13 @@ func _physics_process(_delta):
 		
 		rotation.y = roter
 		
-		rotation_degrees += Vector3(0,-((Toe*(float(translation.x>0)) -Toe*float(translation.x<0))),0)
+		rotation_degrees += Vector3(0,-Toe*sign(translation.x),0)
 	else:
-		rotation_degrees = Vector3(0,-((Toe*(float(translation.x>0)) -Toe*float(translation.x<0))),0)
+		rotation_degrees = Vector3(0,-Toe*sign(translation.x),0)
 	
 	translation = last_translation
 	
-	c_camber = Camber +Caster*rotation.y*float(translation.x>0.0) -Caster*rotation.y*float(translation.x<0.0)
+	c_camber = Camber +Caster*rotation.y*sign(translation.x)
 	
 	directional_force = Vector3(0,0,0)
 	
@@ -277,11 +277,11 @@ func _physics_process(_delta):
 	absolute_wv_diff = output_wv
 	
 	wheelpower = 0.0
-
+	
 	var braked = car.brakeline*B_Bias + car.handbrakepull*HB_Bias
 	braked = min(braked, 1.0)
 	var bp = (B_Torque*braked)/w_weight_read
-
+	
 	if not car.actualgear == 0:
 		if car.dsweightrun>0.0:
 			bp += ((car.stalled*(c_p/car.ds_weight))*car.clutchpedal)*(((500.0/(car.RevSpeed*100.0))/(car.dsweightrun/2.5))/w_weight_read)
@@ -294,15 +294,15 @@ func _physics_process(_delta):
 			wheelpower += -absolute_wv/distanced
 		else:
 			wheelpower += -absolute_wv
-
+	
 	wheelpower_global = wheelpower
 	
 	power()
 	diffs()
-
+	
 	snap = 1.0
 	offset = 0.0
-
+	
 	# WHEEL
 	if is_colliding():
 		if "drag" in get_collider():
@@ -339,15 +339,15 @@ func _physics_process(_delta):
 			if ground_bump>1.0:
 				ground_bump = 1.0
 				ground_bump_up = true
-
+		
 		var suspforce = VitaVehicleSimulation.suspension(self,S_MaxCompression,A_InclineArea,A_ImpactForce,S_RestLength, elasticity,damping,damping_rebound, velocity.y,abs(cast_to.y),global_translation,get_collision_point(),car.mass,ground_bump,ground_bump_height)
 		compress = suspforce
-
+		
 		# FRICTION
 		var grip = (suspforce*tyre_maxgrip)*(ground_friction +fore_friction*CompoundSettings["ForeFriction"])
 		stress = grip
 		var rigidity = 0.67
-
+		
 		var distw = velocity2.z - wv*w_size
 		wv += (wheelpower*(1.0-(1.0/tyre_stiffness)))
 		var disty = velocity2.z - wv*w_size
@@ -385,7 +385,6 @@ func _physics_process(_delta):
 			slip_sk -= CompoundSettings["TractionFactor"]
 			slip_sk = max(slip_sk, 0.0)
 			
-			
 			var slipw = Vector2(distx, 0.0).length()/grip
 			slipw /= slipw*ground_builduprate +1.0
 			var forcey = -disty/(slip +1.0)
@@ -406,7 +405,7 @@ func _physics_process(_delta):
 			smoothy = min(smoothy, 1.0)
 			forcex /= (smoothx*(rigidity) +(1.0-rigidity))
 			forcey /= (smoothy*(rigidity) +(1.0-rigidity))
-				
+			
 			var distyw = Vector2(distx, disty).length()
 			var tr2 = (grip/tyre_stiffness)
 			var afg = tyre_stiffness*tr2
@@ -426,15 +425,15 @@ func _physics_process(_delta):
 			cache_friction_action = forcey*ok
 			
 			wv += (wheelpower*(1.0/tyre_stiffness))
-
+			
 			rollvol = velocity.length()*grip
-
+			
 			sl = slip_sk-tyre_stiffness
 			sl = max(sl, 0.0)
 			skvol = sl/4.0
 			
 #			skvol *= skvol
-
+			
 			skvol_d = slip*25.0
 	else:
 		wv += wheelpower
@@ -454,7 +453,7 @@ func _physics_process(_delta):
 	if is_colliding():
 		hitposition = get_collision_point()
 		directional_force.y = VitaVehicleSimulation.suspension(self,S_MaxCompression,A_InclineArea,A_ImpactForce,S_RestLength, elasticity,damping,damping_rebound, velocity.y,abs(cast_to.y),global_translation,get_collision_point(),car.mass,ground_bump,ground_bump_height)
-
+		
 		# FRICTION
 		var grip = (directional_force.y*tyre_maxgrip)*(ground_friction +fore_friction*CompoundSettings["ForeFriction"])
 		var rigidity = 0.67
@@ -512,31 +511,29 @@ func _physics_process(_delta):
 			directional_force.z = forcey
 	else:
 		$geometry.position = cast_to
-
+	
 	output_wv = wv
 	$animation/camber/wheel.rotate_x(deg_to_rad(wv))
-
+	
 	$geometry.position.y += w_size
-
-
-
+	
+	
+	
 	var inned = (abs(cambered)+A_Geometry4)/90.0
 	
 	inned *= inned -A_Geometry4/90.0
-
+	
 	$geometry.position.x = -inned*translation.x
-
-
-
-	$animation/camber.rotation.z = -(deg_to_rad(-c_camber*float(translation.x<0.0) + c_camber*float(translation.x>0.0)) -deg_to_rad(-cambered*float(translation.x<0.0) + cambered*float(translation.x>0.0))*A_Geometry2)
-
-
-
+	
+	$animation/camber.rotation.z = -(deg_to_rad(c_camber*sign(translation.x)) -deg_to_rad(cambered*sign(translation.x))*A_Geometry2)
+	
+	
+	
 	var g
 	
 	axle_position = $geometry.position.y
-
-
+	
+	
 	if str(Solidify_Axles) == "":
 		g = ($geometry.position.y+(abs(cast_to.y) -A_Geometry1))/(abs(translation.x)+A_Geometry3 +1.0)
 		g /= abs(g) +1.0
