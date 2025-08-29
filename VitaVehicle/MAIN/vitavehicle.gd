@@ -53,22 +53,22 @@ func multivariate(RiseRPM,TorqueRise,BuildUpTorque,EngineFriction,EngineDrag,Off
 		value = (RPM*VVT_BuildUpTorque +VVT_OffsetTorque) + ( (PSI*TurboAmount) * (EngineCompressionRatio*0.609) )
 		f = RPM-VVT_RiseRPM
 		f = max(f, 0.0)
-		value += (f*f)*(VVT_TorqueRise/10000000.0)
+		value += pow(f, 2)*(VVT_TorqueRise*Constants.RISE_FACTOR)
 		j = RPM-VVT_DeclineRPM
 		j = max(j, 0.0)
-		value /= (j*(j*VVT_DeclineSharpness +(1.0-VVT_DeclineSharpness)))*(VVT_DeclineRate/10000000.0) +1.0
-		value /= (RPM*RPM)*(VVT_FloatRate/10000000.0) +1.0
+		value /= (j*(j*VVT_DeclineSharpness +(1.0-VVT_DeclineSharpness)))*(VVT_DeclineRate*Constants.RISE_FACTOR) +1.0
+		value /= pow(RPM, 2)*(VVT_FloatRate*Constants.RISE_FACTOR) +1.0
 	else:
 		value = (RPM*BuildUpTorque +OffsetTorque) + ( (PSI*TurboAmount) * (EngineCompressionRatio*0.609) )
 		f = RPM-RiseRPM
 		f = max(f, 0.0)
-		value += (f*f)*(TorqueRise/10000000.0)
+		value += pow(f, 2)*(TorqueRise*Constants.RISE_FACTOR)
 		j = RPM-DeclineRPM
 		j = max(j, 0.0)
-		value /= (j*(j*DeclineSharpness +(1.0-DeclineSharpness)))*(DeclineRate/10000000.0) +1.0
-		value /= (RPM*RPM)*(FloatRate/10000000.0) +1.0
+		value /= (j*(j*DeclineSharpness +(1.0-DeclineSharpness)))*(DeclineRate*Constants.RISE_FACTOR) +1.0
+		value /= pow(RPM, 2)*(FloatRate*Constants.RISE_FACTOR) +1.0
 	
-	value -= RPM/((abs(RPM*RPM))/EngineFriction +1.0)
+	value -= RPM/(abs(pow(RPM, 2))/EngineFriction +1.0)
 	value -= RPM*EngineDrag
 	
 	return value

@@ -678,11 +678,11 @@ func transmission():
 					actualgear = 0
 		
 		gear = actualgear
-		var wv = 0.0        
+		var wv = 0.0
 		
 		for i in c_pws:
 			wv += i.wv/len(c_pws)
-			
+		
 		cvtaccel -= (cvtaccel - (gaspedal*CVTSettings[0] +(1.0-CVTSettings[0])))*CVTSettings[1]
 		
 		var a = CVTSettings[4]/((abs(wv)/10.0)*cvtaccel +1.0)
@@ -695,7 +695,7 @@ func transmission():
 	
 	elif TransmissionType == 3:
 		clutchpedal = (rpm- float(AutoSettings[3])*(gaspedal*float(AutoSettings[2]) +(1.0-float(AutoSettings[2]))) )/float(AutoSettings[4])
-
+		
 		if gear>0:
 			ratio = GearRatios[gear-1]*FinalDriveRatio*RatioMult
 		elif gear == -1:
@@ -987,21 +987,21 @@ func _physics_process(delta):
 	if vvt:
 		var f = rpm-VVT_RiseRPM
 		f = max(f, 0.0)
-		torque = (rpm*VVT_BuildUpTorque +VVT_OffsetTorque + (f*f)*(VVT_TorqueRise/10000000.0))*throttle
+		torque = (rpm*VVT_BuildUpTorque +VVT_OffsetTorque + pow(f, 2) * (VVT_TorqueRise*Constants.RISE_FACTOR))*throttle
 		torque += ( (turbopsi*TurboAmount) * (EngineCompressionRatio*0.609) )
 		var j = rpm-VVT_DeclineRPM
 		j = max(j, 0.0)
-		torque /= (j*(j*VVT_DeclineSharpness +(1.0-VVT_DeclineSharpness)))*(VVT_DeclineRate/10000000.0) +1.0
-		torque /= abs(rpm*abs(rpm))*(VVT_FloatRate/10000000.0) +1.0
+		torque /= (j*(j*VVT_DeclineSharpness +(1.0-VVT_DeclineSharpness)))*(VVT_DeclineRate*Constants.RISE_FACTOR) +1.0
+		torque /= abs(rpm*abs(rpm))*(VVT_FloatRate*Constants.RISE_FACTOR) +1.0
 	else:
 		var f = rpm-RiseRPM
 		f = max(f, 0.0)
-		torque = (rpm*BuildUpTorque +OffsetTorque + (f*f)*(TorqueRise/10000000.0))*throttle
+		torque = (rpm*BuildUpTorque +OffsetTorque + pow(f, 2) * (TorqueRise*Constants.RISE_FACTOR))*throttle
 		torque += ( (turbopsi*TurboAmount) * (EngineCompressionRatio*0.609) )
 		var j = rpm-DeclineRPM
 		j = max(j, 0.0)
-		torque /= (j*(j*DeclineSharpness +(1.0-DeclineSharpness)))*(DeclineRate/10000000.0) +1.0
-		torque /= abs(rpm*abs(rpm))*(FloatRate/10000000.0) +1.0
+		torque /= (j*(j*DeclineSharpness +(1.0-DeclineSharpness)))*(DeclineRate*Constants.RISE_FACTOR) +1.0
+		torque /= abs(rpm*abs(rpm))*(FloatRate*Constants.RISE_FACTOR) +1.0
 	
 	rpmforce = (rpm/(abs(rpm*abs(rpm))/(EngineFriction/clock_mult) +1.0))*1.0
 	if rpm<DeadRPM:

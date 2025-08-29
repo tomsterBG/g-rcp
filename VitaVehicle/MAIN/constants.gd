@@ -5,6 +5,8 @@
 # For some reason the guy chose to make it all super difficult by doing this:
 # Distance (Godot unit) * 0.30592 = Distance (meter)
 # Distance (Godot unit) / 3.26882845188 = Distance (meter)
+# NOTE:
+# For code it will be more readable to have functions that convert, rather than constants.
 
 class_name Constants
 extends Node
@@ -29,3 +31,6 @@ const TQFTRPM_TO_HP := 5252.0
 
 ## Torque (lbf*ft) * 1.3558179483 = Torque (N.m)
 const LBFFT_TO_NM := 1.3558179483
+
+## Arbitrary thingy
+const RISE_FACTOR = 1e-7 # 1.0 / 10000000.0
