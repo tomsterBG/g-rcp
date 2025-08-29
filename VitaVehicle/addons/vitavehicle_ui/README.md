@@ -1,3 +1,4 @@
 # Notes
 
-Last seen 671 lines of code.
+Lines of code:
+	- First measured 671

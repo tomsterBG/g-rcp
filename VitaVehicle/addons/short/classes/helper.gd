@@ -10,6 +10,10 @@
 # - https://github.com/godotengine/godot-proposals/discussions/13011
 # 	- As stated there: find_parent_with_method, find_parent_with_signal.
 # 		- However this ignores a very important design pattern which is to not access parents.
+# - toggle(bool) -> !bool: It's an idea, but like... why?
+# - approach a value: We already have move_toward(), this could work differently though.
+# - calculate linear crossfade volume: First steps towards an engine sound system.
+# - toggle fullscreen: Maybe? Ensure it doesn't need me to remember state.
 
 ## @experimental: This class is immature.
 ## Public helper methods to shorten your code.
@@ -18,6 +22,16 @@
 
 class_name Helper
 extends Node
+
+
+#region classes
+## The result returned by [method Helper.get_dir_children].
+class DirChildrenResult:
+	## The files found at [param path].
+	var files: Array = []
+	## The folders found at [param path].
+	var folders: Array = []
+#endregion classes
 
 
 #region methods
@@ -108,4 +122,32 @@ static func get_ancestor(node: Node, levels: int) -> Node:
 		ancestor = ancestor.get_parent()
 		if ancestor == null: return null
 	return ancestor
+
+## Returns a [Helper.DirChildrenResult] containing paths to files and folders, at the given [param path]. Uses [method DirAccess.get_files_at], [method DirAccess.get_directories_at].
+##[br][br]Each path starts from [param path] and ends with the file or folder name. For example if [param path] is [code]"res://"[/code] and you only have an [code]addons[/code] folder, the string for it would look like [code]"res://addons"[/code].
+static func get_dir_children(path: String, recursive: bool = false) -> DirChildrenResult:
+	var result := DirChildrenResult.new()
+	
+	var files = DirAccess.get_files_at(path)
+	for file in files: # Is there a way to fast-add prefix to all strings in an array?
+		result.files.append(path+file)
+	
+	var folders = DirAccess.get_directories_at(path)
+	for folder in folders:
+		result.folders.append(path+folder)
+		if !recursive: continue
+		var this_result = get_dir_children(path+folder+"/", recursive)
+		result.files.append_array(this_result.files)
+		result.folders.append_array(this_result.folders)
+	
+	return result
+
+static func get_lines_in_file(path: String) -> int:
+	var lines := 0
+	var file := FileAccess.open(path, FileAccess.READ)
+	while !file.eof_reached():
+		file.get_line()
+		lines += 1
+	file.close()
+	return lines
 #endregion methods

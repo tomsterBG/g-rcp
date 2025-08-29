@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbucs0c1i5q63"]
+
+[ext_resource type="Script" uid="uid://j00njkejhe55" path="res://disposable/lines of code.gd" id="1_43cko"]
+
+[node name="Disposable" type="Node"]
+script = ExtResource("1_43cko")

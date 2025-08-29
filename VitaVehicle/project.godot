@@ -29,7 +29,7 @@ window/vsync/use_vsync=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/g_classes_unit_tested/plugin.cfg", "res://addons/vitavehicle_ui/plugin.cfg")
+enabled=PackedStringArray("res://addons/short/plugin.cfg", "res://addons/vitavehicle_ui/plugin.cfg")
 
 [input]
 
