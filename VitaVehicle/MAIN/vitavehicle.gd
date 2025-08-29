@@ -1,7 +1,8 @@
 @tool
 extends Node
 
-# TODO: find why these are here and are unused, maybe something accesses the global?
+# TODO: Find why these are here and are unused, maybe something accesses the global?
+# I think each car overwrites these... why?
 var misc_smoke = true
 
 var GearAssistant = 2 # 0 = manual, 1 = semi-manual, 2 = auto
@@ -43,34 +44,27 @@ func multivariate(RiseRPM,TorqueRise,BuildUpTorque,EngineFriction,EngineDrag,Off
 		maxpsi = PSI
 		scrpm = RPM*SCRPMInfluence
 		PSI = (scrpm/10000.0)*BlowRate -SCThreshold
-		if PSI>maxpsi:
-			PSI = maxpsi
-		if PSI<0.0:
-			PSI = 0.0
+		PSI = clamp(PSI, 0.0, maxpsi)
 	
 	if not SCEnabled and not TEnabled:
 		PSI = 0.0
-
+	
 	if RPM>VVTRPM:
 		value = (RPM*VVT_BuildUpTorque +VVT_OffsetTorque) + ( (PSI*TurboAmount) * (EngineCompressionRatio*0.609) )
 		f = RPM-VVT_RiseRPM
-		if f<0.0:
-			f = 0.0
+		f = max(f, 0.0)
 		value += (f*f)*(VVT_TorqueRise/10000000.0)
 		j = RPM-VVT_DeclineRPM
-		if j<0.0:
-			j = 0.0
+		j = max(j, 0.0)
 		value /= (j*(j*VVT_DeclineSharpness +(1.0-VVT_DeclineSharpness)))*(VVT_DeclineRate/10000000.0) +1.0
 		value /= (RPM*RPM)*(VVT_FloatRate/10000000.0) +1.0
 	else:
 		value = (RPM*BuildUpTorque +OffsetTorque) + ( (PSI*TurboAmount) * (EngineCompressionRatio*0.609) )
 		f = RPM-RiseRPM
-		if f<0.0:
-			f = 0.0
+		f = max(f, 0.0)
 		value += (f*f)*(TorqueRise/10000000.0)
 		j = RPM-DeclineRPM
-		if j<0.0:
-			j = 0.0
+		j = max(j, 0.0)
 		value /= (j*(j*DeclineSharpness +(1.0-DeclineSharpness)))*(DeclineRate/10000000.0) +1.0
 		value /= (RPM*RPM)*(FloatRate/10000000.0) +1.0
 
@@ -112,59 +106,45 @@ func alignAxisToVector(xform, norm): # i named this literally out of blender
 func suspension(own,maxcompression,incline_free,incline_impact,rest,      elasticity,damping,damping_rebound     ,linearz,g_range,located,hit_located,weight,ground_bump,ground_bump_height):
 	own.get_node("geometry").global_position = own.get_collision_point()
 	own.get_node("geometry").position.y -= (ground_bump*ground_bump_height)
-	if own.get_node("geometry").position.y<-g_range:
-		own.get_node("geometry").position.y = -g_range
+	own.get_node("geometry").position.y = max(own.get_node("geometry").position.y, -g_range)
 	own.get_node("velocity").global_transform = alignAxisToVector(own.get_node("velocity").global_transform,own.get_collision_normal())
 	own.get_node("velocity2").global_transform = alignAxisToVector(own.get_node("velocity2").global_transform,own.get_collision_normal())
-
+	
 	own.angle = (own.get_node("geometry").rotation_degrees.z -(-own.c_camber*float(own.position.x>0.0) + own.c_camber*float(own.position.x<0.0)) +(-own.cambered*float(own.position.x>0.0) + own.cambered*float(own.position.x<0.0))*own.A_Geometry2)/90.0
-
+	
 	var incline = (own.get_collision_normal()-(own.global_transform.basis.orthonormalized() * Vector3(0,1,0))).length()
-		
-	incline /= 1-incline_free
-	incline -= incline_free
-
-	if incline<0.0:
-		incline = 0.0
-
-	incline *= incline_impact
-
-	if incline>1.0:
-		incline = 1.0
-
-	if own.get_node("geometry").position.y>-g_range +maxcompression*(1.0-incline):
-		own.get_node("geometry").position.y = -g_range +maxcompression*(1.0-incline)
-
+	
+	incline = ((incline/(1.0-incline_free)) - incline_free) * incline_impact
+	incline = clamp(incline, 0.0, 1.0)
+	
+	own.get_node("geometry").position.y = min(own.get_node("geometry").position.y, -g_range +maxcompression*(1.0-incline))
+	
 	var damp_variant = damping_rebound
 	if linearz<0:
 		damp_variant = damping
-
+	
 	var compressed = g_range -(located - hit_located).length() - (ground_bump*ground_bump_height)
 	var compressed2 = g_range -(located - hit_located).length() - (ground_bump*ground_bump_height)
 	compressed2 -= maxcompression + (ground_bump*ground_bump_height)
-
-	var j = compressed-rest
 	
-	if j<0.0:
-		j = 0.0
-
-	if compressed2<0.0:
-		compressed2 = 0.0
-
+	var j = compressed-rest
+	j = max(j, 0.0)
+	
+	compressed2 = max(compressed2, 0.0)
+	
 	var elasticity2 = elasticity*(1.0-incline) + (weight)*incline
 	var damping2 = damp_variant*(1.0-incline) + (weight/10.0)*incline
 	var elasticity3 = weight
 	var damping3 = weight/10.0
 	var suspforce = j*elasticity2
-
+	
 	if compressed2>0.0:
 		suspforce -= linearz*damping3
 		suspforce += compressed2*elasticity3
-
+	
 	suspforce -= linearz*damping2
 	own.rd = compressed
-
-	if suspforce<0.0:
-		suspforce = 0.0
+	
+	suspforce = max(suspforce, 0.0)
 	
 	return suspforce
