@@ -1,4 +1,4 @@
-# Notes
+# Why?
 
 There are so many places in which Jreo decided to use if: elif: instead of clamp(). Let's clean that up.
 
@@ -10,6 +10,10 @@ He also toggles things with if else instead of just doing toggle = !toggle.
 
 Doesn't know how to use remap().
 
+Multiplies by 60 to convert to time per second, instead of dividing by delta.
+
+Does (a/b)*(a/b) instead of pow(a/b, 2)
+
 # Bugs
 
 Test these cases to ensure stability:
@@ -19,4 +23,5 @@ Test these cases to ensure stability:
 # Notes
 
 Lines of code:
-	- First measured 4407 in 42 scripts
+	- First measured 4627 lines in 42 scripts
+	- After some cleanup i got 4407 lines in 42 scripts

@@ -1,21 +1,21 @@
 extends Node3D
 
-var pitch = 0.0
-var volume = 0.0
-var fade = 0.0
+var pitch := 0.0
+var volume := 0.0
+var fade := 0.0
 
-var vacuum = 0.0
-var maxfades = 0.0
+var vacuum := 0.0
+var maxfades := 0.0
 
-@export var pitch_calibrate = 7500.0
-@export var vacuum_crossfade = 0.7
-@export var vacuum_loudness = 4.0
-@export var crossfade_vvt = 5.0
-@export var crossfade_throttle = 0.0
-@export var crossfade_influence = 5.0
-@export var overall_volume = 1.0
+@export var pitch_calibrate := 7500.0
+@export var vacuum_crossfade := 0.7
+@export var vacuum_loudness := 4.0
+@export var crossfade_vvt := 5.0
+@export var crossfade_throttle := 0.0
+@export var crossfade_influence := 5.0
+@export var overall_volume := 1.0
 
-var pitch_influence = 1.0
+var pitch_influence := 1.0
 
 func play():
 	for i in get_children():

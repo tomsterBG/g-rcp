@@ -3,42 +3,42 @@ extends Node
 
 # TODO: Find why these are here and are unused, maybe something accesses the global?
 # I think each car overwrites these... why?
-var misc_smoke = true
+var misc_smoke := true
 
-var GearAssistant = 2 # 0 = manual, 1 = semi-manual, 2 = auto
+var GearAssistant := 2 # 0 = manual, 1 = semi-manual, 2 = auto
 
-var UseMouseSteering = false
-var UseAccelerometreSteering = false
-var SteerSensitivity = 1.0
-var KeyboardSteerSpeed = 0.025
-var KeyboardReturnSpeed = 0.05
-var KeyboardCompensateSpeed = 0.1
+var UseMouseSteering := false
+var UseAccelerometreSteering := false
+var SteerSensitivity := 1.0
+var KeyboardSteerSpeed := 0.025
+var KeyboardReturnSpeed := 0.05
+var KeyboardCompensateSpeed := 0.1
 
-var SteerAmountDecay = 0.0125 # understeer help
-var SteeringAssistance = 1.0
-var SteeringAssistanceAngular = 0.25
+var SteerAmountDecay := 0.0125 # understeer help
+var SteeringAssistance := 1.0
+var SteeringAssistanceAngular := 0.25
 
-var OnThrottleRate = 0.2
-var OffThrottleRate = 0.2
+var OnThrottleRate := 0.2
+var OffThrottleRate := 0.2
 
-var OnBrakeRate = 0.05
-var OffBrakeRate = 0.1
+var OnBrakeRate := 0.05
+var OffBrakeRate := 0.1
 
-var OnHandbrakeRate = 0.2
-var OffHandbrakeRate = 0.2
+var OnHandbrakeRate := 0.2
+var OffHandbrakeRate := 0.2
 
-var OnClutchRate = 0.2
-var OffClutchRate = 0.2
+var OnClutchRate := 0.2
+var OffClutchRate := 0.2
 
 
 
 func multivariate(RiseRPM,TorqueRise,BuildUpTorque,EngineFriction,EngineDrag,OffsetTorque,RPM,DeclineRPM,DeclineRate,FloatRate,PSI,TurboAmount,EngineCompressionRatio,TEnabled,VVTRPM,VVT_BuildUpTorque,VVT_TorqueRise,VVT_RiseRPM,VVT_OffsetTorque,VVT_FloatRate,VVT_DeclineRPM,VVT_DeclineRate,SCEnabled,SCRPMInfluence,BlowRate,SCThreshold,DeclineSharpness,VVT_DeclineSharpness):
-	var value = 0.0
+	var value := 0.0
 	
-	var maxpsi = 0.0
-	var scrpm = 0.0
-	var f = 0.0
-	var j = 0.0
+	var maxpsi := 0.0
+	var scrpm := 0.0
+	var f := 0.0
+	var j := 0.0
 	
 	if SCEnabled:
 		maxpsi = PSI
@@ -67,7 +67,7 @@ func multivariate(RiseRPM,TorqueRise,BuildUpTorque,EngineFriction,EngineDrag,Off
 		j = max(j, 0.0)
 		value /= (j*(j*DeclineSharpness +(1.0-DeclineSharpness)))*(DeclineRate/10000000.0) +1.0
 		value /= (RPM*RPM)*(FloatRate/10000000.0) +1.0
-
+	
 	value -= RPM/((abs(RPM*RPM))/EngineFriction +1.0)
 	value -= RPM*EngineDrag
 	
@@ -75,7 +75,7 @@ func multivariate(RiseRPM,TorqueRise,BuildUpTorque,EngineFriction,EngineDrag,Off
 
 
 func fastest_wheel(array):
-	var val = -INF
+	var val := -INF
 	var obj
 	
 	for i in array:
@@ -86,7 +86,7 @@ func fastest_wheel(array):
 	return obj
 
 func slowest_wheel(array):
-	var val = INF
+	var val := INF
 	var obj
 	
 	for i in array:
@@ -112,7 +112,7 @@ func suspension(own,maxcompression,incline_free,incline_impact,rest,      elasti
 	
 	own.angle = (own.get_node("geometry").rotation_degrees.z -(-own.c_camber*float(own.position.x>0.0) + own.c_camber*float(own.position.x<0.0)) +(-own.cambered*float(own.position.x>0.0) + own.cambered*float(own.position.x<0.0))*own.A_Geometry2)/90.0
 	
-	var incline = (own.get_collision_normal()-(own.global_transform.basis.orthonormalized() * Vector3(0,1,0))).length()
+	var incline: float = (own.get_collision_normal()-(own.global_transform.basis.orthonormalized() * Vector3(0,1,0))).length()
 	
 	incline = ((incline/(1.0-incline_free)) - incline_free) * incline_impact
 	incline = clamp(incline, 0.0, 1.0)

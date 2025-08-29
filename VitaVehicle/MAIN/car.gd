@@ -1,42 +1,42 @@
 extends RigidBody3D
 
 
-@export var Debug_Mode :bool = false
+@export var Debug_Mode: bool = false
 
 # TODO: fix why are controls in each car and not in one place per user?
 # controls
-@export var Use_Global_Control_Settings :bool = false
-@export var UseMouseSteering :bool = false
-@export var UseAccelerometreSteering :bool = false
-@export var SteerSensitivity = 1.0
-@export var KeyboardSteerSpeed = 0.025
-@export var KeyboardReturnSpeed = 0.05
-@export var KeyboardCompensateSpeed = 0.1
+@export var Use_Global_Control_Settings: bool = false
+@export var UseMouseSteering: bool = false
+@export var UseAccelerometreSteering: bool = false
+@export var SteerSensitivity := 1.0
+@export var KeyboardSteerSpeed := 0.025
+@export var KeyboardReturnSpeed := 0.05
+@export var KeyboardCompensateSpeed := 0.1
 
-@export var SteerAmountDecay = 0.015 # understeer help
-@export var SteeringAssistance = 0.0
-@export var SteeringAssistanceAngular = 0.0
+@export var SteerAmountDecay := 0.015 # understeer help
+@export var SteeringAssistance := 0.0
+@export var SteeringAssistanceAngular := 0.0
 
 @export var LooseSteering: bool = false #simulate rack and pinion steering physics (EXPERIMENTAL)
 
-@export var OnThrottleRate = 0.2
-@export var OffThrottleRate = 0.2
+@export var OnThrottleRate := 0.2
+@export var OffThrottleRate := 0.2
 
-@export var OnBrakeRate = 0.05
-@export var OffBrakeRate = 0.1
+@export var OnBrakeRate := 0.05
+@export var OffBrakeRate := 0.1
 
-@export var OnHandbrakeRate = 0.2
-@export var OffHandbrakeRate = 0.2
+@export var OnHandbrakeRate := 0.2
+@export var OffHandbrakeRate := 0.2
 
-@export var OnClutchRate = 0.2
-@export var OffClutchRate = 0.2
+@export var OnClutchRate := 0.2
+@export var OffClutchRate := 0.2
 
-@export var MaxThrottle = 1.0
-@export var MaxBrake = 1.0
-@export var MaxHandbrake = 1.0
-@export var MaxClutch = 1.0
+@export var MaxThrottle := 1.0
+@export var MaxBrake := 1.0
+@export var MaxHandbrake := 1.0
+@export var MaxClutch := 1.0
 
-@export var GearAssistant = [ # TODO: Make this more readable.
+@export var GearAssistant := [ # TODO: Make this more readable.
 20, # Shift delay
 0, # Assistance Level (0 - 2)
 0.944087, # Speed Influence (will be automatically set)
@@ -47,15 +47,15 @@ extends RigidBody3D
 ]
 
 # meta
-@export var Controlled = true
+@export var Controlled := true
 
 # chassis
-@export var Weight = 900.0 # kg
+@export var Weight := 900.0 # kg
 
 # body
-@export var LiftAngle = 0.1
-@export var DragCoefficient = 0.25
-@export var Downforce = 0.0
+@export var LiftAngle := 0.1
+@export var DragCoefficient := 0.25
+@export var Downforce := 0.0
 
 
 
@@ -65,24 +65,24 @@ extends RigidBody3D
 
 
 #steering
-@export var AckermannPoint = -3.8
-@export var Steer_Radius = 13.0
+@export var AckermannPoint := -3.8
+@export var Steer_Radius := 13.0
 
 #drivetrain
-@export var Powered_Wheels :Array[String] = ["fl","fr"]
+@export var Powered_Wheels: Array[String] = ["fl","fr"]
 
-@export var FinalDriveRatio = 4.250
-@export var GearRatios :Array[float] = [ 3.250, 1.894, 1.259, 0.937, 0.771 ]
-@export var ReverseRatio = 3.153
+@export var FinalDriveRatio := 4.250
+@export var GearRatios: Array[float] = [ 3.250, 1.894, 1.259, 0.937, 0.771 ]
+@export var ReverseRatio := 3.153
 
-@export var RatioMult = 9.5
-@export var StressFactor = 1.0
-@export var GearGap = 60.0
-@export var DSWeight = 150.0 # Leave this be, unless you know what you're doing.
+@export var RatioMult := 9.5
+@export var StressFactor := 1.0
+@export var GearGap := 60.0
+@export var DSWeight := 150.0 # Leave this be, unless you know what you're doing.
 
-@export_enum("Fully Manual", "Automatic", "Continuously Variable", "Semi-Auto") var TransmissionType = 0
+@export_enum("Fully Manual", "Automatic", "Continuously Variable", "Semi-Auto") var TransmissionType := 0
 
-@export var AutoSettings = [
+@export var AutoSettings := [
 6500.0, # shift rpm (auto)
 300.0, # downshift threshold (auto)
 0.5, # throttle efficiency threshold (range: 0 - 1) (auto/dct)
@@ -90,7 +90,7 @@ extends RigidBody3D
 4000.0, # engagement rpm (auto/dct/cvt)
 ]
 
-@export var CVTSettings = [
+@export var CVTSettings := [
 0.75, # throttle efficiency threshold (range: 0 - 1)
 0.025, # acceleration rate (range: 0 - 1)
 0.9, # iteration 1 (higher = higher rpm)
@@ -100,10 +100,8 @@ extends RigidBody3D
 ]
 
 
-
-
 #stability
-@export var ABS = [ # anti-lock braking system
+@export var ABS := [ # anti-lock braking system
 2500.0, # threshold
 1, # pump time
 10, # vehicle speed before activation
@@ -113,7 +111,7 @@ true, # enabled
 2, # lateral pump time
 ]
 
-@export var ESP = [ # electronic stability program
+@export var ESP := [ # electronic stability program
 0.5, # stabilisation theshold
 1.5, # stabilisation rate (higher = understeer, understeer = inefficient)
 1, # yaw threshold
@@ -121,13 +119,13 @@ true, # enabled
 false, # enableda
 ]
 
-@export var BTCS = [ # brake-based traction control system
+@export var BTCS := [ # brake-based traction control system
 10, # threshold
 0.05, # sensitivity
 false, # enabled
 ]
 
-@export var TTCS = [ # throttle-based traction control system
+@export var TTCS := [ # throttle-based traction control system
 5, # threshold
 1.0, # sensitivity
 false, # enabled
@@ -135,161 +133,161 @@ false, # enabled
 
 
 #differentials
-@export var Locking = 0.1
-@export var CoastLocking = 0.0
-@export var Preload = 0.0
+@export var Locking := 0.1
+@export var CoastLocking := 0.0
+@export var Preload := 0.0
 
-@export var Centre_Locking = 0.5
-@export var Centre_CoastLocking = 0.5
-@export var Centre_Preload = 0.0
+@export var Centre_Locking := 0.5
+@export var Centre_CoastLocking := 0.5
+@export var Centre_Preload := 0.0
 
 #engine
-@export var RevSpeed = 2.0 # Flywheel lightness
-@export var EngineFriction = 18000.0
-@export var EngineDrag = 0.006
-@export var ThrottleResponse = 0.5
-@export var DeadRPM = 100.0
+@export var RevSpeed := 2.0 # Flywheel lightness
+@export var EngineFriction := 18000.0
+@export var EngineDrag := 0.006
+@export var ThrottleResponse := 0.5
+@export var DeadRPM := 100.0
 
 #ECU
-@export var RPMLimit = 7000.0
-@export var LimiterDelay = 4
-@export var IdleRPM = 800.0
-@export var ThrottleLimit = 0.0
-@export var ThrottleIdle = 0.25
-@export var VVTRPM = 4500.0 # set this beyond the rev range to disable it, set it to 0 to use this vvt state permanently
+@export var RPMLimit := 7000.0
+@export var LimiterDelay := 4
+@export var IdleRPM := 800.0
+@export var ThrottleLimit := 0.0
+@export var ThrottleIdle := 0.25
+@export var VVTRPM := 4500.0 # set this beyond the rev range to disable it, set it to 0 to use this vvt state permanently
 
 #torque normal state
-@export var BuildUpTorque = 0.0035
-@export var TorqueRise = 30.0
-@export var RiseRPM = 1000.0
-@export var OffsetTorque = 110.0
-@export var FloatRate = 0.1
-@export var DeclineRate = 1.5
-@export var DeclineRPM = 3500.0
-@export var DeclineSharpness = 1.0
+@export var BuildUpTorque := 0.0035
+@export var TorqueRise := 30.0
+@export var RiseRPM := 1000.0
+@export var OffsetTorque := 110.0
+@export var FloatRate := 0.1
+@export var DeclineRate := 1.5
+@export var DeclineRPM := 3500.0
+@export var DeclineSharpness := 1.0
 
 #torque @export variable valve timing triggered
-@export var VVT_BuildUpTorque = 0.0
-@export var VVT_TorqueRise = 60.0
-@export var VVT_RiseRPM = 1000.0
-@export var VVT_OffsetTorque = 70.0
-@export var VVT_FloatRate = 0.1
-@export var VVT_DeclineRate = 2.0
-@export var VVT_DeclineRPM = 5000.0
-@export var VVT_DeclineSharpness = 1.0
+@export var VVT_BuildUpTorque := 0.0
+@export var VVT_TorqueRise := 60.0
+@export var VVT_RiseRPM := 1000.0
+@export var VVT_OffsetTorque := 70.0
+@export var VVT_FloatRate := 0.1
+@export var VVT_DeclineRate := 2.0
+@export var VVT_DeclineRPM := 5000.0
+@export var VVT_DeclineSharpness := 1.0
 
 #clutch
-@export var ClutchStable = 0.5
-@export var GearRatioRatioThreshold = 200.0
-@export var ThresholdStable = 0.01
-@export var ClutchGrip = 176.125
-@export var ClutchFloatReduction = 27.0
+@export var ClutchStable := 0.5
+@export var GearRatioRatioThreshold := 200.0
+@export var ThresholdStable := 0.01
+@export var ClutchGrip := 176.125
+@export var ClutchFloatReduction := 27.0
 
-@export var ClutchWobble = 2.5*0
-@export var ClutchElasticity = 0.2*0
-@export var WobbleRate = 0.0
+@export var ClutchWobble := 2.5*0
+@export var ClutchElasticity := 0.2*0
+@export var WobbleRate := 0.0
 
 #forced inductions
-@export var MaxPSI = 9.0 # Maximum air generated by any forced inductions
-@export var EngineCompressionRatio = 8.0 # Piston travel distance
+@export var MaxPSI := 9.0 # Maximum air generated by any forced inductions
+@export var EngineCompressionRatio := 8.0 # Piston travel distance
 #turbo
-@export var TurboEnabled = false # Enables turbo
-@export var TurboAmount = 1 # Turbo power multiplication.
-@export var TurboSize = 8.0 # Higher = More turbo lag
-@export var Compressor = 0.3 # Higher = Allows more spooling on low RPM
-@export var SpoolThreshold = 0.1 # Range: 0 - 0.9999
-@export var BlowoffRate = 0.14
-@export var TurboEfficiency = 0.075 # Range: 0 - 1
-@export var TurboVacuum = 1.0 # Performance deficiency upon turbo idle
+@export var TurboEnabled := false # Enables turbo
+@export var TurboAmount := 1 # Turbo power multiplication.
+@export var TurboSize := 8.0 # Higher = More turbo lag
+@export var Compressor := 0.3 # Higher = Allows more spooling on low RPM
+@export var SpoolThreshold := 0.1 # Range: 0 - 0.9999
+@export var BlowoffRate := 0.14
+@export var TurboEfficiency := 0.075 # Range: 0 - 1
+@export var TurboVacuum := 1.0 # Performance deficiency upon turbo idle
 #supercharger
-@export var SuperchargerEnabled = false # Enables supercharger
-@export var SCRPMInfluence = 1.0
-@export var BlowRate = 35.0
-@export var SCThreshold = 6.0
+@export var SuperchargerEnabled := false # Enables supercharger
+@export var SCRPMInfluence := 1.0
+@export var BlowRate := 35.0
+@export var SCThreshold := 6.0
 
-var rpm = 0.0
-var rpmspeed = 0.0
-var resistancerpm = 0.0
-var resistancedv = 0.0
-var gear = 0
-var limdel = 0
-var actualgear = 0
-var gearstress = 0.0
-var throttle = 0.0
-var cvtaccel = 0.0
-var sassistdel = 0
-var sassiststep = 0
-var clutchin = false
-var gasrestricted = false
-var revmatch = false
-var gaspedal = 0.0
-var brakepedal = 0.0
-var clutchpedal = 0.0
-var clutchpedalreal = 0.0
-var steer = 0.0
-var steer2 = 0.0
-var abspump = 0.0
-var tcsweight = 0.0
-var tcsflash = false
-var espflash = false
-var ratio = 0.0
-var vvt = false
-var brake_allowed = 0.0
-var readout_torque = 0.0
+var rpm := 0.0
+var rpmspeed := 0.0
+var resistancerpm := 0.0
+var resistancedv := 0.0
+var gear := 0
+var limdel := 0
+var actualgear := 0
+var gearstress := 0.0
+var throttle := 0.0
+var cvtaccel := 0.0
+var sassistdel := 0
+var sassiststep := 0
+var clutchin := false
+var gasrestricted := false
+var revmatch := false
+var gaspedal := 0.0
+var brakepedal := 0.0
+var clutchpedal := 0.0
+var clutchpedalreal := 0.0
+var steer := 0.0
+var steer2 := 0.0
+var abspump := 0.0
+var tcsweight := 0.0
+var tcsflash := false
+var espflash := false
+var ratio := 0.0
+var vvt := false
+var brake_allowed := 0.0
+var readout_torque := 0.0
 
-var brakeline = 0.0
-var handbrakepull = 0.0
-var dsweight = 0.0
-var dsweightrun = 0.0
-var diffspeed = 0.0
-var diffspeedun = 0.0
-var locked = 0.0
-var c_locked = 0.0
-var wv_difference = 0.0
-var rpmforce = 0.0
-var whinepitch = 0.0
-var turbopsi = 0.0
-var scrpm = 0.0
-var boosting = 0.0
-var rpmcs = 0.0
-var rpmcsm = 0.0
-var currentstable = 0.0
-var steering_geometry = [0.0,0.0]
-var resistance = 0.0
-var wob = 0.0
-var ds_weight = 0.0
-var steer_torque = 0.0
-var steer_velocity = 0.0
-var drivewheels_size = 1.0
+var brakeline := 0.0
+var handbrakepull := 0.0
+var dsweight := 0.0
+var dsweightrun := 0.0
+var diffspeed := 0.0
+var diffspeedun := 0.0
+var locked := 0.0
+var c_locked := 0.0
+var wv_difference := 0.0
+var rpmforce := 0.0
+var whinepitch := 0.0
+var turbopsi := 0.0
+var scrpm := 0.0
+var boosting := 0.0
+var rpmcs := 0.0
+var rpmcsm := 0.0
+var currentstable := 0.0
+var steering_geometry := [0.0,0.0]
+var resistance := 0.0
+var wob := 0.0
+var ds_weight := 0.0
+var steer_torque := 0.0
+var steer_velocity := 0.0
+var drivewheels_size := 1.0
 
-var steering_angles = []
-var max_steering_angle = 0.0
-var assistance_factor = 0.0
-
-
-
-var pastvelocity = Vector3(0,0,0)
-var gforce = Vector3(0,0,0)
-var clock_mult = 1.0
-var dist = 0.0
-var stress = 0.0
+var steering_angles := []
+var max_steering_angle := 0.0
+var assistance_factor := 0.0
 
 
 
-var su = false
-var sd = false
-var gas = false
-var brake = false
-var handbrake = false
-var right = false
-var left = false
-var clutch = false
+var pastvelocity := Vector3(0,0,0)
+var gforce := Vector3(0,0,0)
+var clock_mult := 1.0
+var dist := 0.0
+var stress := 0.0
+
+
+
+var su := false
+var sd := false
+var gas := false
+var brake := false
+var handbrake := false
+var right := false
+var left := false
+var clutch := false
 var c_pws = []
 
-var velocity = Vector3(0,0,0)
-var rvelocity = Vector3(0,0,0)
+var velocity := Vector3(0,0,0)
+var rvelocity := Vector3(0,0,0)
 
-var stalled = 0.0
+var stalled := 0.0
 
 func bullet_fix():
 	var offset = $DRAG_CENTRE.position
@@ -348,7 +346,7 @@ func controls():
 				steer_velocity += i.directional_force.z*0.0001
 			else:
 				steer_velocity -= i.directional_force.z*0.0001
-		
+			
 			steer_velocity /= i.stress/(i.slip_percpre*(i.slip_percpre*100.0) +1.0) +1.0
 	
 	
@@ -455,7 +453,7 @@ func transmission():
 	su = Input.is_action_just_pressed("shiftup") and not UseMouseSteering or Input.is_action_just_pressed("shiftup_mouse") and UseMouseSteering
 	sd = Input.is_action_just_pressed("shiftdown") and not UseMouseSteering or Input.is_action_just_pressed("shiftdown_mouse") and UseMouseSteering
 	
-	var clutch = Input.is_action_pressed("clutch") and not UseMouseSteering or Input.is_action_pressed("clutch_mouse") and UseMouseSteering
+	clutch = Input.is_action_pressed("clutch") and not UseMouseSteering or Input.is_action_pressed("clutch_mouse") and UseMouseSteering
 	if not GearAssistant[1] == 0:
 		clutch = Input.is_action_pressed("handbrake") and not UseMouseSteering or Input.is_action_pressed("handbrake_mouse") and UseMouseSteering
 	clutch = not clutch
@@ -869,7 +867,7 @@ func aero():
 		apply_central_impulse(forc)
 		
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if len(steering_angles)>0:
 		max_steering_angle = 0.0
 		for i in steering_angles:
@@ -902,24 +900,24 @@ func _physics_process(_delta):
 	mass = Weight/10.0
 	aero()
 	
-	gforce = (linear_velocity - pastvelocity)*((0.30592/9.806)*60.0)
+	gforce = (linear_velocity - pastvelocity)*((Constants.UNIT_TO_METER/Constants.EARTH_GRAVITY)/delta)
 	pastvelocity = linear_velocity
 	
-	gforce = global_transform.basis.orthonormalized().transposed() * (gforce)
+	gforce = global_transform.basis.orthonormalized().transposed() * gforce
 	
 	controls()
-
+	
 	ratio = 10.0
-
+	
 	sassistdel -= 1
-
+	
 	transmission()
 	
 	limits()
-
+	
 	var steeroutput = steer
 	
-	var uhh = (max_steering_angle/90.0)*(max_steering_angle/90.0) # WHY? Just do to the second power!
+	var uhh = pow(max_steering_angle/90.0, 2)
 	uhh *= 0.5	
 	steeroutput *= abs(steer)*(uhh) +(1.0-uhh)
 	
@@ -1015,7 +1013,7 @@ func _physics_process(_delta):
 	rpmforce += (rpm*(EngineDrag/clock_mult))*1.0
 	rpmforce -= (torque/clock_mult)*1.0
 	rpm -= rpmforce*RevSpeed
-		
+	
 	drivetrain()
 
 var front_wheels = []

@@ -1,40 +1,40 @@
 extends Node3D
 
-@export var backfire_FuelRichness = 0.2
-@export var backfire_FuelDecay = 0.1
-@export var backfire_Air = 0.02
-@export var backfire_BackfirePrevention = 0.1
-@export var backfire_BackfireThreshold = 1.0
-@export var backfire_BackfireRate = 1.0
-@export var backfire_Volume = 0.5
+@export var backfire_FuelRichness := 0.2
+@export var backfire_FuelDecay := 0.1
+@export var backfire_Air := 0.02
+@export var backfire_BackfirePrevention := 0.1
+@export var backfire_BackfireThreshold := 1.0
+@export var backfire_BackfireRate := 1.0
+@export var backfire_Volume := 0.5
 
 
-@export var WhinePitch = 4
-@export var WhineVolume = 0.4
+@export var WhinePitch := 4.0
+@export var WhineVolume := 0.4
  
-@export var BlowOffBounceSpeed = 0.0
-@export var BlowOffWhineReduction = 1.0
-@export var BlowDamping = 0.25
-@export var BlowOffVolume = 0.5
-@export var BlowOffVolume2 = 0.5
-@export var BlowOffPitch1 = 0.5
-@export var BlowOffPitch2 = 1.0
-@export var MaxWhinePitch = 1.8
-@export var SpoolVolume = 0.5
-@export var SpoolPitch = 0.5
-@export var BlowPitch = 1.0
-@export var TurboNoiseRPMAffection = 0.25
+@export var BlowOffBounceSpeed := 0.0
+@export var BlowOffWhineReduction := 1.0
+@export var BlowDamping := 0.25
+@export var BlowOffVolume := 0.5
+@export var BlowOffVolume2 := 0.5
+@export var BlowOffPitch1 := 0.5
+@export var BlowOffPitch2 := 1.0
+@export var MaxWhinePitch := 1.8
+@export var SpoolVolume := 0.5
+@export var SpoolPitch := 0.5
+@export var BlowPitch := 1.0
+@export var TurboNoiseRPMAffection := 0.25
 
-@export var engine_sound = NodePath("../engine_sound")
-@export var exhaust_particles :Array[NodePath] = []
+@export var engine_sound := NodePath("../engine_sound")
+@export var exhaust_particles: Array[NodePath] = []
 
-@export var volume = 0.25
-var blow_psi = 0.0
-var blow_inertia = 0.0
+@export var volume := 0.25
+var blow_psi := 0.0
+var blow_inertia := 0.0
 
-var fueltrace = 0.0
-var air = 0.0
-var rand = 0.0
+var fueltrace := 0.0
+var air := 0.0
+var rand := 0.0
 
 func play():
 	$blow.stop()
