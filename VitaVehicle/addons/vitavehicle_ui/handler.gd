@@ -46,22 +46,24 @@ func refresh():
 var changed_graph_size = Vector2(0.0,0.0)
 
 func _process(delta):
-	if not changed_graph_size == $Engine_Tuner/power_graph.size and engine_enabled:
+	if changed_graph_size != $Engine_Tuner/power_graph.size and engine_enabled:
 		changed_graph_size = $Engine_Tuner/power_graph.size
 		$Engine_Tuner/power_graph.draw_()
 	
-	if engine_enabled:
-		for i in $Engine_Tuner/tune/container.get_children():
-			if i.get_class() == "SpinBox":
-				if not $Engine_Tuner/power_graph.get(i.var_name) == float(i.value):
-					$Engine_Tuner/power_graph.set(i.var_name, float(i.value))
-					refresh()
-			elif i.get_class() == "CheckBox":
-#				print(i)
-#				print(i.var_name)
-				if not $Engine_Tuner/power_graph.get(str(i.var_name)) == i.button_pressed:
-					$Engine_Tuner/power_graph.set(i.var_name, i.button_pressed)
-					refresh()
+	if !engine_enabled:
+		return
+	
+	for i in $Engine_Tuner/tune/container.get_children():
+		if i.get_class() == "SpinBox":
+			if $Engine_Tuner/power_graph.get(i.var_name) != float(i.value):
+				$Engine_Tuner/power_graph.set(i.var_name, float(i.value))
+				refresh()
+		elif i.get_class() == "CheckBox":
+			#print(i)
+			#print(i.var_name)
+			if $Engine_Tuner/power_graph.get(str(i.var_name)) != i.button_pressed:
+				$Engine_Tuner/power_graph.set(i.var_name, i.button_pressed)
+				refresh()
 
 var nods_buffer = []
 
@@ -143,8 +145,8 @@ func press(state):
 			$Engine_Tuner/confirm.dialog_text = "This configuration will be applied to the following nodes: \n"
 			for i in nods:
 				$Engine_Tuner/confirm.dialog_text += str("-") +str(i.name) +str("\n")
-
-					
+			
+			
 			if len(missing) == 0:
 				$Engine_Tuner/confirm.popup()
 			else:

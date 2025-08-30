@@ -1,13 +1,13 @@
 extends RigidBody3D
 
 
-@export var Debug_Mode: bool = false
+@export var Debug_Mode := false
 
 # TODO: fix why are controls in each car and not in one place per user?
 # controls
-@export var Use_Global_Control_Settings: bool = false
-@export var UseMouseSteering: bool = false
-@export var UseAccelerometreSteering: bool = false
+@export var Use_Global_Control_Settings := false
+@export var UseMouseSteering := false
+@export var UseAccelerometreSteering := false
 @export var SteerSensitivity := 1.0
 @export var KeyboardSteerSpeed := 0.025
 @export var KeyboardReturnSpeed := 0.05
@@ -17,7 +17,7 @@ extends RigidBody3D
 @export var SteeringAssistance := 0.0
 @export var SteeringAssistanceAngular := 0.0
 
-@export var LooseSteering: bool = false #simulate rack and pinion steering physics (EXPERIMENTAL)
+@export var LooseSteering := false #simulate rack and pinion steering physics (EXPERIMENTAL)
 
 @export var OnThrottleRate := 0.2
 @export var OffThrottleRate := 0.2

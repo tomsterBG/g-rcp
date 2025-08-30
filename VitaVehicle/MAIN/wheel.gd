@@ -3,23 +3,23 @@ extends RayCast3D
 @export var RealismOptions = {
 }
 
-@export var Steer :bool = true
-@export var Differed_Wheel = ""
-@export var SwayBarConnection = ""
+@export var Steer := true
+@export var Differed_Wheel := ""
+@export var SwayBarConnection := ""
 
-@export var W_PowerBias = 1.0
-@export var TyreSettings = {
+@export var W_PowerBias := 1.0
+@export var TyreSettings := {
 	"GripInfluence": 1.0,
 	"Width (mm)": 185.0,
 	"Aspect Ratio": 60.0,
 	"Rim Size (in)": 14.0
 	}
-@export var TyrePressure = 30.0
-@export var Camber = 0.0
-@export var Caster = 0.0
-@export var Toe = 0.0
+@export var TyrePressure := 30.0
+@export var Camber := 0.0
+@export var Caster := 0.0
+@export var Toe := 0.0
 
-@export var CompoundSettings = {
+@export var CompoundSettings := {
 	"OptimumTemp": 50.0,
 	"Stiffness": 1.0,
 	"TractionFactor": 1.0,
@@ -30,86 +30,86 @@ extends RayCast3D
 	"BuildupAffection": 1.0,
 	"CoolRate": 0.000075}
 
-@export var S_Stiffness = 47.0
-@export var S_Damping = 3.5
-@export var S_ReboundDamping = 3.5
-@export var S_RestLength = 0.0
-@export var S_MaxCompression = 0.5
-@export var A_InclineArea = 0.2
-@export var A_ImpactForce = 1.5
-@export var AR_Stiff = 0.5
-@export var AR_Elast = 0.1
-@export var B_Torque = 15.0
-@export var B_Bias = 1.0
-@export var B_Saturation = 1.0 # leave this at 1.0 unless you have a heavy vehicle with large wheels, set it higher depending on how big it is
-@export var HB_Bias = 0.0
-@export var A_Geometry1 = 1.15
-@export var A_Geometry2 = 1.0
-@export var A_Geometry3 = 0.0
-@export var A_Geometry4 = 0.0
-@export var Solidify_Axles = NodePath()
-@export var ContactABS = true
-@export var ESP_Role = ""
-@export var ContactBTCS = false
-@export var ContactTTCS = false
+@export var S_Stiffness := 47.0
+@export var S_Damping := 3.5
+@export var S_ReboundDamping := 3.5
+@export var S_RestLength := 0.0
+@export var S_MaxCompression := 0.5
+@export var A_InclineArea := 0.2
+@export var A_ImpactForce := 1.5
+@export var AR_Stiff := 0.5
+@export var AR_Elast := 0.1
+@export var B_Torque := 15.0
+@export var B_Bias := 1.0
+@export var B_Saturation := 1.0 # leave this at 1.0 unless you have a heavy vehicle with large wheels, set it higher depending on how big it is
+@export var HB_Bias := 0.0
+@export var A_Geometry1 := 1.15
+@export var A_Geometry2 := 1.0
+@export var A_Geometry3 := 0.0
+@export var A_Geometry4 := 0.0
+@export var Solidify_Axles := NodePath()
+@export var ContactABS := true
+@export var ESP_Role := ""
+@export var ContactBTCS := false
+@export var ContactTTCS := false
 
 
-@onready var car = get_parent()
+@onready var car := get_parent()
 
-var dist = 0.0
-var w_size = 1.0
-var w_size_read = 1.0
-var w_weight_read = 0.0
-var w_weight = 0.0
-var wv = 0.0
-var wv_ds = 0.0
-var wv_diff = 0.0
-var c_tp = 0.0
-var effectiveness = 0.0
+var dist := 0.0
+var w_size := 1.0
+var w_size_read := 1.0
+var w_weight_read := 0.0
+var w_weight := 0.0
+var wv := 0.0
+var wv_ds := 0.0
+var wv_diff := 0.0
+var c_tp := 0.0
+var effectiveness := 0.0
 
-var angle = 0.0
-var snap = 0.0
-var absolute_wv = 0.0
-var absolute_wv_brake = 0.0
-var absolute_wv_diff = 0.0
-var output_wv = 0.0
-var offset = 0.0
-var c_p = 0.0
-var wheelpower = 0.0
-var wheelpower_global = 0.0
-var stress = 0.0
-var rolldist = 0.0
-var rd = 0.0
-var c_camber = 0.0
-var cambered = 0.0
+var angle := 0.0
+var snap := 0.0
+var absolute_wv := 0.0
+var absolute_wv_brake := 0.0
+var absolute_wv_diff := 0.0
+var output_wv := 0.0
+var offset := 0.0
+var c_p := 0.0
+var wheelpower := 0.0
+var wheelpower_global := 0.0
+var stress := 0.0
+var rolldist := 0.0
+var rd := 0.0
+var c_camber := 0.0
+var cambered := 0.0
 
-var rollvol = 0.0
-var sl = 0.0
-var skvol = 0.0
-var skvol_d = 0.0
-var velocity = Vector3(0,0,0)
-var velocity2 = Vector3(0,0,0)
-var compress = 0.0
-var compensate = 0.0
-var axle_position = 0.0
+var rollvol := 0.0
+var sl := 0.0
+var skvol := 0.0
+var skvol_d := 0.0
+var velocity := Vector3(0,0,0)
+var velocity2 := Vector3(0,0,0)
+var compress := 0.0
+var compensate := 0.0
+var axle_position := 0.0
 
-var heat_rate = 1.0
-var wear_rate = 1.0
+var heat_rate := 1.0
+var wear_rate := 1.0
 
-var ground_bump = 0.0
-var ground_bump_up = false
-var ground_bump_frequency = 0.0
-var ground_bump_frequency_random = 1.0
-var ground_bump_height = 0.0
+var ground_bump := 0.0
+var ground_bump_up := false
+var ground_bump_frequency := 0.0
+var ground_bump_frequency_random := 1.0
+var ground_bump_height := 0.0
 
-var ground_friction = 1.0
-var ground_stiffness = 1.0
-var fore_friction = 0.0
-var fore_stiffness = 0.0
-var drag = 0.0
-var ground_builduprate = 0.0
-var ground_dirt = false
-var hitposition = Vector3(0,0,0)
+var ground_friction := 1.0
+var ground_stiffness := 1.0
+var fore_friction := 0.0
+var fore_stiffness := 0.0
+var drag := 0.0
+var ground_builduprate := 0.0
+var ground_dirt := false
+var hitposition := Vector3(0,0,0)
 
 var cache_tyrestiffness = 0.0
 var cache_friction_action = 0.0

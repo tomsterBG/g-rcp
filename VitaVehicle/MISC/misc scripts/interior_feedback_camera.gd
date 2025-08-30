@@ -1,18 +1,20 @@
+# IMPORTANT: Dead code?
+
 extends Camera3D
 
 
 var defaultpos
 var defaultrot
-var mometum = Vector3(0,0,0)
-var pastspeed = Vector3(0,0,0)
-var mometum_ro = Vector3(0,0,0)
-var pastspeed_ro = Vector3(0,0,0)
+var mometum := Vector3(0,0,0)
+var pastspeed := Vector3(0,0,0)
+var mometum_ro := Vector3(0,0,0)
+var pastspeed_ro := Vector3(0,0,0)
 
 func _ready():
 	defaultpos = position
 	defaultrot = rotation
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	pastspeed -= (pastspeed - get_parent().velocity)*0.1
 	mometum = get_parent().velocity - pastspeed
 	mometum_ro = get_parent().angular_velocity

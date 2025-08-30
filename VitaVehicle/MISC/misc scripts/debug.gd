@@ -43,8 +43,10 @@ func _process(delta):
 		$handbrake.bar_scale = get_node(car).handbrakepull
 		$clutch.bar_scale = get_node(car).clutchpedalreal
 		
-		$tacho/speedk.text = "KM/PH: " +str(int(get_node(car).linear_velocity.length()*Constants.UNIT_TO_KMH))
-		$tacho/speedm.text = "MPH: " +str(int((get_node(car).linear_velocity.length()*Constants.UNIT_TO_KMH)/Constants.KMH_TO_MPH))
+		$tacho/speedk.text = "KM/PH: " + str(int(get_node(car).linear_velocity.length()*Constants.UNIT_TO_KMH))
+		$tacho/speedm.text = "MPH: " + str(int(
+			(get_node(car).linear_velocity.length()*Constants.UNIT_TO_KMH) * Constants.KMH_TO_MPH
+		))
 		
 		
 		
@@ -62,7 +64,7 @@ func _process(delta):
 			tqunit = "nm"
 		elif $power_graph.Torque_Unit == 2:
 			tqunit = "kg/m"
-		$tq.text = "Torque: %s%s @ %s RPM" % [str( int($power_graph.peaktq[0]*10.0)/10.0 ), tqunit ,str( int($power_graph.peaktq[1]*10.0)/10.0 )]
+		$tq.text = "Torque: %s%s @ %s RPM" % [str( int($power_graph.peaktq[0]*10.0)/10.0 ), tqunit ,str(int($power_graph.peaktq[1]*10.0)/10.0)]
 		
 		$power_graph/rpm.position.x = (get_node(car).rpm/$power_graph.Generation_Range)*$power_graph.size.x -1.0
 		$power_graph/redline.position.x = (get_node(car).RPMLimit/$power_graph.Generation_Range)*$power_graph.size.x -1.0
